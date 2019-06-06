@@ -19,20 +19,14 @@ var rotX;
 var fCursor;
 var fCursorGrowInt;
 var cells = [];
- var RoseRings = [];
+var RoseRings = [];
 var RingMaxReached = false;
 var RoseRingLimiter = 0;
 
 
-
-
-
-
 function preload(){
 font = loadFont('RussoOne-Regular.ttf');
-
 }
-
 
 function setup() {
   canvas = createCanvas(windowWidth, 2500);
@@ -67,53 +61,31 @@ function setup() {
   angleMode(DEGREES);
   cells.push(new Cell());
   cells.push(new Cell());
-  
- 
-  
- fontPoints = font.textToPoints('Truephoria',width/2 -400 ,130,150);
+  fontPoints = font.textToPoints('Truephoria',width/2 -400 ,130,150);
   rFill = 0;
   k = 7;
   n = 1;
   rotX = 0;
 
-  
-  
-  
-  
-
 //Music Box Setup
-
   music_Box.size(200, 50, 40);
   music_Box.position(15, 500);  
   music_Box.color(255,0,0,155);
   
-
-  
-
 //Game Projects Box Setup
-
   game_Projects_Box.position(15, 800);
   game_Projects_Box.size(200, 50, 40);
-  //game_Projects_Box.color(0,255,0,100);
-  
-  
 
 //Coding Projects Box Setup
-
   coding_Projects_Box.position(15, 1100);
   coding_Projects_Box.size(200, 50, 40);
-  //coding_Projects_Box.color(0,255,0, 100);
  
-  
 //Discord Box Setup
-
   discord_Box.position(15, 1500);
   discord_Box.size(200, 50, 40);
-  //discord_Box.color(0,0,255, 100);
-
  
 
-
+ //Push Vehicles 
  for (var i = 0; i < fontPoints.length; i++){
   var pnts = fontPoints[i];
   var vehicle = new Vehicle(pnts.x, pnts.y);
@@ -121,181 +93,121 @@ function setup() {
   stroke(255,255,255);
   strokeWeight(4);
   point(pnts.x, pnts.y);
-  }
-  
-
- 
- 
-
-
-  
+  }  
 }
 
 function draw() {
-  
   background(TronBGImg);
-  //background(55);
  
-  
+ //Init Time Variables
   var hr = hour();
   var mn = minute();
   var sec = second();
   var mil = millis();
   var zeroHolder = "0";
   var secZeroHolder = "0";
-  
-  
+ 
   //FunCursor//
-  
   if(fCursorGrowInt > 0){
   fCursor.show();
   fCursor.grow();
-  
- 
-  
   }
   
   //Cell//
   push();
- 
-  for (var i = 0; i < cells.length; i++){
-    
+  for (var i = 0; i < cells.length; i++)
+  {
     cells[i].move();
     cells[i].show();
     cells[i].r += cos(sin(.01 * cells[i].r)*10);
     if(cells[i].r > 50){
      cells[i].r *= -1 
-    }
-    
-   if(cells.length > 20){
+  }
+   if(cells.length > 20)
+   {
    cells.splice(i,1);
-   
    }
-  
   }
   pop();
   
-  
-  
   //Rose Pattern//
-  
-  if(k <= 200000){
-  k+= .13}
-  
-  if(k >= 200000){
- 
+  if(k <= 200000)
+  {
+  k+= .13
+  }
+  if(k >= 200000)
+  {
     k = k*(-1)
-   
-}
+  }
   if(rFill <=255){
   rFill++
   }
-  
   if(rFill >= 255){
   rFill*= -1
   }
-   
-    rotX++
-    
-  
+  rotX++
   push();
-  
-  
   beginShape();
-  
   translate(width/2,height/2)
-fill(0,255,255);
+  fill(0,255,255);
   stroke(0,255,255);
-    strokeWeight(10);
-  
+  strokeWeight(10);
   rotate(rotX);
-  
-  
-    
-  
-  for (var a = 0; a < 100; a += 1){
-   
-   RoseRingLimiter+=.1
-  
-    //var r = 2000 * sin(cos(tan(.01 * k)/n * 1000 * RoseRingLimiter));
-    //var x = r * tan(RoseRingLimiter);
-    //var y = r * cos(RoseRingLimiter);
-    //var z = r * sin(RoseRingLimiter);
-    
+ 
+  for (var a = 0; a < 100; a += 1)
+  {
+    RoseRingLimiter+=.1
     var r = 200 * cos(n/k * RoseRingLimiter);
     var x = r * sin(RoseRingLimiter);
     var y = r * cos(RoseRingLimiter);
     var z = r * tan(sin(r));
-    
     var ringCheck = [];
-   vertex(x,y)
-   vertex(y,z)
-   vertex(z,x)
-   
-    //n+=1;
-    
-    
+    vertex(x,y)
+    vertex(y,z)
+    vertex(z,x)
     RoseRings.push(new RoseRing(x,y,z));   
-    if(RoseRingLimiter%1 == 0){
+    if(RoseRingLimiter%1 == 0)
+    {
     RoseRings[RoseRingLimiter-1].show();
     }
-    if(a == 2000){
-     
+    if(a == 2000)
+    {
      RoseRings.splice(0,1);
      RoseRings = [];
      console.log(RoseRings.length + " length")
      a = 0;
     }
-    
-    
-      }
-    
-  
-  
-     
-  
-  //var roseRing = new RoseRing(x,y,r);
-  //    roseRing.x = x;
-  //    roseRing.y = y;
-  //    roseRing.z = r;
-  //    roseRing.show();
-      
-  //     console.log(roseRing);
-  //  //RoseRings.push(roseRing);
-    
-  //  //if(RoseRings.length > 50){
-  //  //RoseRings.splice(a, 1);
-   
-  //  //}
-  //  //ellipse(y,x,z);
-  //  //point(x,y);
-  
-
-  //}
- endShape();
+  }
+  endShape();
   pop();
-  
-  if (sec > "9"){secZeroHolder = ""};
-  if(mn >"9"){zeroHolder = ""};
-  
+ 
+ 
+  //Vehicles for Text
   push();
-  for (var i = 0; i < vehicles.length; i++){
-  var v = vehicles[i];
-  v.update();
-  v.show();
-  v.behaviors();
-  stroke(255,255,255);
-  strokeWeight(4);
- // point(pnts.x, pnts.y);
+  for (var i = 0; i < vehicles.length; i++)
+  {
+   var v = vehicles[i];
+   v.update();
+   v.show();
+   v.behaviors();
+   stroke(255,255,255);
+   strokeWeight(4);
   }
   textFont(font);
   textSize(80);
   text('Truephoria',width/2 -150 ,2150);
-  
-   
-  
   pop();
-  
+ 
+ 
+  //Virtual Clock
+  if (sec > "9")
+  {
+   secZeroHolder = ""
+  };
+  if(mn >"9")
+  {
+   zeroHolder = ""
+  };
   push();
   translate(width/2,1900)
   rotate(-90);
@@ -339,374 +251,269 @@ fill(0,255,255);
   stroke(255,0,0,55)
   line(0,0,50,0)
   pop();
-  
   pop();
   
-  
   push();
-
   fill(0,255,255);
   textFont(font);
   textSize(30);
   text(hr + " : " + zeroHolder + mn + " : " + secZeroHolder + sec, width/2 -75 ,2105);
-  
-  
-  
   pop();
   
 //Music Box
   push();
   stroke(255);
   strokeWeight(5);
-  
   music_Box.display(); 
   if(SChiddenLink == false){
-  SCLink.hidden = false;
-  MusicText.hidden = false;
-  //MusicArrow.hidden = true;
-  MusicArrowRight.setAttribute("style", "border-left: 25px solid red");
-  MusicArrowRight.setAttribute("style", "opacity:0");
-  MusicArrowLeft.setAttribute("style", "border-right: 50px solid white");
+   SCLink.hidden = false;
+   MusicText.hidden = false;
+   MusicArrowRight.setAttribute("style", "border-left: 25px solid red");
+   MusicArrowRight.setAttribute("style", "opacity:0");
+   MusicArrowLeft.setAttribute("style", "border-right: 50px solid white");
   }
   if(SChiddenLink == true){
-  SCLink.hidden = true;
-  MusicText.hidden = true;
-  MusicArrowRight.setAttribute("style", "border-left: 25px solid white");
-  MusicArrowLeft.setAttribute("style", "border-right: 50px solid black");
-  MusicArrowLeft.setAttribute("style", "opacity:0;");
+   SCLink.hidden = true;
+   MusicText.hidden = true;
+   MusicArrowRight.setAttribute("style", "border-left: 25px solid white");
+   MusicArrowLeft.setAttribute("style", "border-right: 50px solid black");
+   MusicArrowLeft.setAttribute("style", "opacity:0;");
   }
   pop();
   push()
   textSize(28);  
   textStyle(BOLD);
-  if(SChiddenLink == false){
-    
-  fill(0,0,0);
-  text('My Music', 45 ,535);
+  if(SChiddenLink == false)
+  { 
+   fill(0,0,0);
+   text('My Music', 45 ,535);
   }
-  else{
-  fill(255,255,255);
-  text('My Music', 45 ,535);
+  else
+  {
+   fill(255,255,255);
+   text('My Music', 45 ,535);
   }
-  
   pop();
-  
- 
-  //music_Box.enterText('My Music', 55, 335, 28);
- 
-  
- 
-  
+
 //Game Projects Box
   push(); 
   stroke(255);
   strokeWeight(5); 
   game_Projects_Box.display();
   if(Game_Proj_HiddenLink == false){
-  Game_Proj_Link.hidden = false;
-  GameProjectsText.hidden = false;
-  GameProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
-  GameProjectArrowRight.setAttribute("style", "opacity: 0;");
-  GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
+   Game_Proj_Link.hidden = false;
+   GameProjectsText.hidden = false;
+   GameProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
+   GameProjectArrowRight.setAttribute("style", "opacity: 0;");
+   GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
   }
   if(Game_Proj_HiddenLink == true){
-  Game_Proj_Link.hidden = true;
-  GameProjectsText.hidden = true;
-  GameProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
-  GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
-  GameProjectArrowLeft.setAttribute("style", "opacity: 0;");
+   Game_Proj_Link.hidden = true;
+   GameProjectsText.hidden = true;
+   GameProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
+   GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
+   GameProjectArrowLeft.setAttribute("style", "opacity: 0;");
   }
   pop();
   push();
   textSize(21);
   textStyle(BOLD);
   if(Game_Proj_HiddenLink == false){
-  fill(0,0,0);
-  text('Game Projects', 35, 835);
+   fill(0,0,0);
+   text('Game Projects', 35, 835);
   }
   else{
-  fill(255,255,255);
-  text('Game Projects', 35, 835);
+   fill(255,255,255);
+   text('Game Projects', 35, 835);
   }
   pop();
   
 //Coding Projects Box
-  
-  
   push(); 
   stroke(255);
   strokeWeight(5); 
   coding_Projects_Box.display();
-  if(Code_Proj_HiddenLink == false){
-  Code_Proj_Link.hidden = false;
-  CodeProjectsText.hidden = false;
-  CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
-  CodingProjectArrowRight.setAttribute("style", "opacity:0");
-  CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
+  if(Code_Proj_HiddenLink == false)
+  {
+   Code_Proj_Link.hidden = false;
+   CodeProjectsText.hidden = false;
+   CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
+   CodingProjectArrowRight.setAttribute("style", "opacity:0");
+   CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
   }
-  if(Code_Proj_HiddenLink == true){
-  Code_Proj_Link.hidden = true;
-  CodeProjectsText.hidden = true;
-  CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
-  CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
-  CodingProjectArrowLeft.setAttribute("style", "opacity:0");
+  if(Code_Proj_HiddenLink == true)
+  {
+   Code_Proj_Link.hidden = true;
+   CodeProjectsText.hidden = true;
+   CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
+   CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
+   CodingProjectArrowLeft.setAttribute("style", "opacity:0");
   }
   pop();
   push();
   textSize(20);
   textStyle(BOLD);
-  if(Code_Proj_HiddenLink == false){
-  fill(0,0,0);
-  text('Coding Projects', 29, 1135);}
-  else{
-  fill(255,255,255);
-  text('Coding Projects', 29, 1135);
+  if(Code_Proj_HiddenLink == false)
+  {
+   fill(0,0,0);
+   text('Coding Projects', 29, 1135);
+  }
+  else
+  {
+   fill(255,255,255);
+   text('Coding Projects', 29, 1135);
   }
   pop();
   
 //Discord Box
-  
-  
   push(); 
   stroke(255);
   strokeWeight(5); 
   discord_Box.display();
-  if(Discord_HiddenLink == false){
-  Discord_Link.hidden = false;
-  DiscordText.hidden = false;
-  DiscordArrowRight.setAttribute("style", "border-left: 25px solid red");
-  DiscordArrowRight.setAttribute("style", "opacity:0");
-  DiscordArrowLeft.setAttribute("style", "border-right: 50px solid white");
+  if(Discord_HiddenLink == false)
+  {
+   Discord_Link.hidden = false;
+   DiscordText.hidden = false;
+   DiscordArrowRight.setAttribute("style", "border-left: 25px solid red");
+   DiscordArrowRight.setAttribute("style", "opacity:0");
+   DiscordArrowLeft.setAttribute("style", "border-right: 50px solid white");
   }
-  if(Discord_HiddenLink == true){
-  Discord_Link.hidden = true;
-  DiscordText.hidden = true;
-  DiscordArrowRight.setAttribute("style", "border-left: 25px solid white");
-  DiscordArrowLeft.setAttribute("style", "border-right: 50px solid black");
-  DiscordArrowLeft.setAttribute("style", "opacity:0");
+  if(Discord_HiddenLink == true)
+  {
+   Discord_Link.hidden = true;
+   DiscordText.hidden = true;
+   DiscordArrowRight.setAttribute("style", "border-left: 25px solid white");
+   DiscordArrowLeft.setAttribute("style", "border-right: 50px solid black");
+   DiscordArrowLeft.setAttribute("style", "opacity:0");
   }
   pop();
   push();
   textSize(30);
   textStyle(BOLD);
-  if(Discord_HiddenLink == false){
-  fill(0,0,0);
-  text('Discord', 55, 1535);
+  if(Discord_HiddenLink == false)
+  {
+   fill(0,0,0);
+   text('Discord', 55, 1535);
   }
-  else{
-  fill(255,255,255);
-  text('Discord', 55, 1535);
+  else
+  {
+   fill(255,255,255);
+   text('Discord', 55, 1535);
   }
-  pop();
-  
-  
-  
-//Funny Box
-  
-  
-//Hilarity Button
-  
-
-  
+  pop(); 
 }
 
 
-function changeBGColor(){
-
+function changeBGColor()
+{
   backGroundColor = color(random(255));
-
 };
 
-function changeTextColor(newColor){
-  
-  
-  
+function changeTextColor(newColor)
+{
 SCLink.style.color = "Orange";
-//SCLink.style.fontSize = 72;
-//SCLink.style.px = '5000px';
-
-
-
 };
 
-
-
-function windowResize(){
-  
+function windowResize()
+{
   resizeCanvas(windowWidth, 2500);
-
 }
-
-
-
 
 function mousePressed(){
-   
-  //fCursor.radius = 55;
-  
   fCursorGrowInt++;
-   
-  
-  
   //clicking cells//
-  
-  for (var i = cells.length -1 ; i >= 0; i--){
-  if (cells[i].clicked(mouseX, mouseY)){
-    //console.log("CLICKED");
+  for (var i = cells.length -1 ; i >= 0; i--)
+ {
+  if (cells[i].clicked(mouseX, mouseY))
+  {
     cells.push(cells[i].mitosis());
     cells.push(cells[i].mitosis());
     cells.splice(i, 1);
     cells[i].split = true;
-  }
-  
-  }
-  
-  
-  //changeTextColor("blue");
-  
-  
-  
-  //music_Box.clicked()
- 
-  
-  if(mouseX > music_Box.posX && mouseX < music_Box.sizeX){
-   if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY){
-     
+  } 
+ }
+  if(mouseX > music_Box.posX && mouseX < music_Box.sizeX)
+  {
+   if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY)
+   {
      timesClicked++;
-     
-  
-     
-
-  music_Box.sizeX = windowWidth - (windowWidth/4)
-  music_Box.sizeY = windowHeight/4;
-
-  SChiddenLink = false;
-
-  
+     music_Box.sizeX = windowWidth - (windowWidth/4)
+     music_Box.sizeY = windowHeight/4;
+     SChiddenLink = false;
    }
   }
-    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth){
-      if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY){
-    timesClicked++;
- 
- 
-music_Box.sizeX = 200;
-music_Box.sizeY = 50;
-   SChiddenLink = true;
-
-  
-    
-
-  
-
+    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth)
+    {
+      if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY)
+      {
+       timesClicked++;
+       music_Box.sizeX = 200;
+       music_Box.sizeY = 50;
+       SChiddenLink = true;
       }
-}
-
-
-//game_Projects_Box.clicked();
-
-if(mouseX > game_Projects_Box.posX && mouseX < game_Projects_Box.sizeX){
-   if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY){
+    }
+if(mouseX > game_Projects_Box.posX && mouseX < game_Projects_Box.sizeX)
+{
+  if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY)
+  {
      timesClicked++;
-     
      x = windowWidth - (windowWidth/4);
      y = windowHeight/4;
      xx = lerp(game_Projects_Box.sizeX ,x,1);
      yy = lerp(game_Projects_Box.sizeY ,y,1);
-     
-     
-
-  game_Projects_Box.sizeX = xx;
-  game_Projects_Box.sizeY = yy;
-
-  Game_Proj_HiddenLink = false;
-
+     game_Projects_Box.sizeX = xx;
+     game_Projects_Box.sizeY = yy;
+     Game_Proj_HiddenLink = false;
    }
-  }
-    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth){
-      if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY){
-    timesClicked++;
- 
- 
-game_Projects_Box.sizeX = 200;
-game_Projects_Box.sizeY = 50;
-   Game_Proj_HiddenLink = true;
-
-  
-    
-
-  
-
+ }
+    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth)
+    {
+      if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY)
+      {
+       timesClicked++;
+       game_Projects_Box.sizeX = 200;
+       game_Projects_Box.sizeY = 50;
+       Game_Proj_HiddenLink = true;
       }
-}
-
-
-  
-//coding_Projects_Box.clicked();
-
-if(mouseX > coding_Projects_Box.posX && mouseX < coding_Projects_Box.sizeX){
-   if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY){
+    }
+if(mouseX > coding_Projects_Box.posX && mouseX < coding_Projects_Box.sizeX)
+{
+   if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY)
+   {
      timesClicked++;
-     
-     
-
-  coding_Projects_Box.sizeX = windowWidth - (windowWidth/4)
-  coding_Projects_Box.sizeY = windowHeight/4;
-
-  Code_Proj_HiddenLink = false;
- 
-  
+     coding_Projects_Box.sizeX = windowWidth - (windowWidth/4)
+     coding_Projects_Box.sizeY = windowHeight/4;
+     Code_Proj_HiddenLink = false;
    }
-  }
-    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth){
-     if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY){ 
-    timesClicked++;
- 
- 
-coding_Projects_Box.sizeX = 200;
-coding_Projects_Box.sizeY = 50;
-   Code_Proj_HiddenLink = true;
-
-  
-    
-
-  
-
-     }
 }
-
-
-//discord_Box.clicked();
-
-if(mouseX > discord_Box.posX && mouseX < discord_Box.sizeX){
-   if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY){
+    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth)
+    {
+     if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY)
+     { 
+       timesClicked++;
+       coding_Projects_Box.sizeX = 200;
+       coding_Projects_Box.sizeY = 50;
+       Code_Proj_HiddenLink = true;
+     }
+   }
+if(mouseX > discord_Box.posX && mouseX < discord_Box.sizeX)
+{
+   if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY)
+   {
      timesClicked++;
-     
-     
-
-  discord_Box.sizeX = windowWidth - (windowWidth/4)
-  discord_Box.sizeY = windowHeight/4;
-
-  Discord_HiddenLink = false;
-  
-  
+     discord_Box.sizeX = windowWidth - (windowWidth/4)
+     discord_Box.sizeY = windowHeight/4;
+     Discord_HiddenLink = false;
    }
-  }
-    if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth){
-     if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY){ 
-    timesClicked++;
- 
- 
-discord_Box.sizeX = 200;
-discord_Box.sizeY = 50;
-   Discord_HiddenLink = true;
-
-  
-    
-
-  
-
-     }
 }
-  
+ if(mouseX > windowWidth - (windowWidth/4) && mouseX < windowWidth)
+  {
+   if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY)
+    { 
+      timesClicked++;
+      discord_Box.sizeX = 200;
+      discord_Box.sizeY = 50;
+      Discord_HiddenLink = true;
+    }
+  }
 };
