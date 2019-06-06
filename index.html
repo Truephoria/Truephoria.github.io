@@ -1,0 +1,698 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" type="text/javascript" src="Box.js"></script>
+  <script language="javascript" type="text/javascript" src="Cell.js"></script>
+  <script language="javascript" type="text/javascript" src="FunCursor.js"></script>
+  <script language="javascript" type="text/javascript" src="RoseRing.js"></script>
+  <script language="javascript" type="text/javascript" src="Vehicle.js"></script>
+  <script language="javascript" type="text/javascript" src="Trevor_Website.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style. 
+       You might only need one of these values set. -->
+  <style> 
+body {
+    padding: 10; 
+    margin: 5;
+  } 
+
+
+#heading_Title {
+  white-space: initial;
+  word-wrap:break-word;
+  color: white;
+  font-size: 50;
+  text-shadow: 2px 2px blue;
+  position: absolute; 
+  top: 10px;
+  //margin-top: 25px;
+  margin-right: 100px;
+  padding: 10px;
+  right: 1;
+  width:750px;
+  height: 50px;
+  font-weight: bold;
+
+} 
+
+/* Style the header */
+.header {
+  padding: 80px;
+  text-align: center;
+  //border: 2px solid white;
+  //color: white;
+}
+
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 40px;
+}
+</style>
+
+<style>
+/* Style the top navigation bar */
+
+
+/* Style the navigation bar links */
+.navbar a {
+  color: red;
+  //color:blue;
+  
+  
+}
+
+.navbar a {
+  transform-style: preserve-3d;
+   transform: rotateZ(25deg);
+   
+  
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  float: left;
+  border: 2px solid white;
+  display: grid;
+  //overflow: hidden;
+  background-color: black;
+  padding:20px 20px;
+  position:relative;
+   top: 80px;
+   
+  //transform: rotate(5deg);
+  
+  
+  transition-property: width;
+  transition-duration: 1s;
+  width: 250px
+  
+  
+  
+}
+
+
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color:red;
+  //position: absolute:
+  color: white;
+  border: 1px solid black;
+  width:235px;
+  
+  
+}
+
+
+</style>
+</head>
+
+
+
+
+<body>
+
+<h1 id="heading_Title"> </h1>
+
+
+
+</style>
+
+<div class="header">
+  
+</div>
+
+<div class="navbar">
+  <a href="https://soundcloud.com/naughty-robot">Music</a>
+  <a href="https://www.youtube.com/channel/UCI6wYFlMOgjCqRL6P4Vrhig">Game Projects</a>
+  <a href="https://github.com/Truephoria">Code Projects</a>
+  <a href="https://discord.gg/UvUyk6j">Discord</a>
+</div>
+
+
+
+
+
+<p id="MusicText"> Here is a collection of some of my music I've shared publicly. <br> 
+You can contact me about remixes and collaborations as well.  </p>
+
+
+<style>
+#triangle-right-music {
+  position:relative;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-left: 25px solid white;
+  border-bottom: 20px solid transparent;
+  margin-top: 330px;
+  margin-left: 170px;
+  //visibility: hidden;
+  opacity:.75;
+}
+#triangle-right-music:hover {
+  opacity:1;
+}
+
+#triangle-left-music {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 40px solid transparent;
+  border-right: 50px solid black;
+  border-bottom: 40px solid transparent;
+  margin-top: -10px;
+  margin-right: 100px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-left-music:hover{
+opacity:1;
+
+}
+
+
+</style>
+<div id="triangle-right-music"></div>
+<div id="triangle-left-music"></div>
+
+
+<style>
+
+#MusicText {
+  white-space: initial;
+  word-wrap:break-word;
+  color: white;
+  font-size: 24;
+  text-shadow: 2px 1px #000000;
+  position: absolute; 
+  top: 500px;
+  margin-top: 50px;
+  margin-right: 0px;
+  padding: 10px;
+  right: 1;
+  width:1225px;
+  height: 50px;
+}
+
+</style>
+
+
+
+<p id="GameProjectsText"> I'm currently developing a game 
+within Unreal Engine. <br>I've also created some game mechanics and other fun effects. <br> 
+You can check out them out here.
+</p>
+
+
+<style>
+#triangle-right-GProjects {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 20px solid transparent;
+  border-left: 25px solid white;
+  border-bottom: 20px solid transparent;
+  margin-top: 190px;
+  margin-left: 170px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-right-GProjects:hover {
+ opacity:1;
+}
+</style>
+
+<div id="triangle-right-GProjects"></div>
+
+
+<style>
+#triangle-left-GProjects {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 40px solid transparent;
+  border-right: 50px solid black;
+  border-bottom: 40px solid transparent;
+  margin-top: -10px;
+  margin-right: 100px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-left-GProjects:hover{
+opacity:1;
+}
+
+</style>
+
+<div id="triangle-left-GProjects"></div>
+
+
+<style>
+
+#GameProjectsText {
+  white-space: initial;
+  word-wrap:break-word;
+  color: white;
+  font-size: 22;
+  text-shadow: 2px 1px #000000;
+  position: absolute; 
+  top: 780px;
+  margin-top: 60px;
+  margin-right: 0px;
+  padding: 10px;
+  right: 1;
+  width:1225px;
+  height: 50px;
+}
+
+</style>
+
+
+<p id="CodeProjectsText"> Visit my GitHub repository for some silly coding snippets <br>
+along with more serious projects I've been coding. <br> 
+Always learning, and always creating! 
+</p>
+
+
+<style>
+#triangle-right-CodeProjects {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 20px solid transparent;
+  border-left: 25px solid white;
+  border-bottom: 20px solid transparent;
+  margin-top: 190px;
+  margin-left: 170px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-right-CodeProjects:hover {
+  opacity:1;
+}
+</style>
+
+<div id="triangle-right-CodeProjects"></div>
+
+
+<style>
+#triangle-left-CodeProjects {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 40px solid transparent;
+  border-right: 50px solid black;
+  border-bottom: 40px solid transparent;
+  margin-top: -10px;
+  margin-right: 100px;
+  opacity: .75;
+  //visibility: hidden;
+}
+
+#triangle-left-CodeProjects:hover{
+opacity:1;
+
+}
+
+</style>
+
+<div id="triangle-left-CodeProjects"></div>
+
+
+<style>
+
+#CodeProjectsText {
+  white-space: initial;
+  word-wrap:break-word;
+  color: white;
+  font-size: 22;
+  text-shadow: 2px 1px #000000;
+  position: absolute; 
+  top: 1080px;
+  margin-top: 60px;
+  margin-right: 0px;
+  padding: 10px;
+  right: 1;
+  width:1225px;
+  height: 50px;
+}
+
+</style>
+
+
+<p id="DiscordText"> If you like to chat and be around really cool people,<br>
+come join the Discord server I've created and let us know more about you! <br> 
+If you're shy, that's fine, we welcome anyone and everyone! 
+</p>
+
+
+<style>
+#triangle-right-Discord {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 20px solid transparent;
+  border-left: 25px solid white;
+  border-bottom: 20px solid transparent;
+  margin-top: 290px;
+  margin-left: 170px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-right-Discord:hover {
+  opacity:1;
+}
+</style>
+
+<div id="triangle-right-Discord"></div>
+
+
+
+<style>
+#triangle-left-Discord {
+  position:relative
+  //width: 0;
+  //height: 0;
+  border-top: 40px solid transparent;
+  border-right: 50px solid black;
+  border-bottom: 40px solid transparent;
+  margin-top: -10px;
+  margin-right: 100px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+#triangle-left-Discord:hover {
+opacity:1;
+
+}
+</style>
+
+<div id="triangle-left-Discord"></div>
+
+<style>
+
+#DiscordText {
+  white-space: initial;
+  word-wrap:break-word;
+  color: white;
+  font-size: 22;
+  text-shadow: 2px 1px #000000;
+  position: absolute; 
+  top: 1480px;
+  margin-top: 60px;
+  margin-right: 0px;
+  padding: 10px;
+  right: 1;
+  width:1225px;
+  height: 50px;
+}
+
+</style>
+
+
+<style>
+
+
+div.SCLink{
+  position: absolute;
+  top: 450px; 
+  right: 1;
+  width: 500px;
+  height: 50px;
+  opacity: .75;
+}
+
+div.SCLink:hover{
+opacity:1;
+
+
+}
+
+
+  </style>
+ 
+<div class="SCLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+
+<style>
+
+
+div.Game_Proj_Link{
+  position: absolute;
+  top: 735px; 
+  right: 1;
+  width: 545px;
+  height: 50px;
+  opacity: .75;
+}
+ div.Game_Proj_Link:hover{
+ opacity:1;
+ 
+ }
+
+
+  </style>
+ 
+<div class="Game_Proj_Link"> <a href="https://www.youtube.com/channel/UCpFaTfmxUCKYW2CN6ishFCA" id="Game_Projects_Link"><img src="Pixel_Controller_2.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+
+<style>
+
+
+div.Code_Proj_Link{
+  position: absolute;
+  top: 1050px; 
+  right: 1;
+  width: 500px;
+  height: 50px;
+  opacity: .75;
+  //visibility: hidden;
+}
+
+div.Code_Proj_Link:hover{
+opacity:1;
+}
+
+
+  </style>
+ 
+<div class="Code_Proj_Link"> <a href="https://github.com/Truephoria" id="Code_Projects_Link"><img src="SwanComputer_Assembled.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+
+<style>
+
+
+div.Discord_Link{
+  position: absolute;
+  top: 1450px; 
+  right: 1;
+  width: 500px;
+  height: 50px;
+  opacity:.75;
+  //visibility: hidden;
+}
+
+div.Discord_Link:hover{
+opacity:1;
+}
+
+  </style>
+ 
+ 
+ 
+<div class="Discord_Link"> <a href="https://discord.gg/UvUyk6j" id="Discord_Join_Link"><img src="Discord_logo.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+<style>
+
+.footer {
+   position: absolute;
+   left:0;
+   bottom: -2000;
+   font-size: 35px;
+   text-align: Center;
+   height: 260px;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-indent: 50px;
+   text-shadow: 4px 4px black;
+   //opacity: .5;
+}
+
+.footer:hover {
+  opacity:1;
+  
+}
+
+</style>
+
+<style>
+
+.footerEmail {
+   position: absolute;
+   left:0;
+   bottom: -1975;
+   font-size: 25px;
+   text-shadow: 2px 2px black;
+   height: 150px;
+   width: 40%;
+   //background-color: red;
+   color: white;
+   text-indent: 50px;
+   text-shadow: 2px 2px black;
+  
+}
+.footerEmailLink {
+   position: absolute;
+   left:75;
+   bottom: -1975;
+   font-size: 25px;
+   
+   height: 150px;
+   width: 40%;
+   //background-color: red;
+   color: white;
+   text-indent: 50px;
+   
+  
+}
+
+.footerEmailLink:hover {
+  font-size: 30px;
+  bottom: -1965;
+}
+
+</style>
+
+<style>
+
+.footerFollow {
+   position: absolute;
+   right:255px;
+   bottom: -1975;
+   font-size: 25px;
+   text-align: right;
+   height: 150px;
+   width: 25%;
+   //background-color: red;
+   color: white;
+  text-shadow: 2px 2px black;
+  
+   
+}
+
+
+
+
+
+
+div.TwitterFollowLink{
+  position: relative;
+  top: 795; 
+  left: 1035;
+ 
+  width: 50px;
+  height: 50px;
+  opacity:.75;
+}
+
+div.TwitterFollowLink:hover{
+  opacity:1;
+}
+
+div.SCFollowLink{
+  position: relative;
+  top: 845; 
+  left: 1095;
+  width: 50px;
+  height: 50px;
+  opacity:.75;
+}
+
+div.SCFollowLink:hover{
+  opacity:1;
+}
+
+div.GithubFollowLink{
+  position: relative;
+  top: 800; 
+  left: 1035;
+  width: 50px;
+  height: 50px;
+  opacity:.75;
+}
+
+div.GithubFollowLink:hover{
+  opacity:1;
+}
+
+div.IGFollowLink{
+  position: relative;
+  top: 750; 
+  left: 1095;
+  width: 50px;
+  height: 50px;
+  opacity:.75;
+}
+
+div.IGFollowLink:hover{
+  opacity:1;
+}
+
+
+
+</style>
+
+<div class="footer">
+  <p>Contact</p> 
+</div>
+
+
+<div class ="footerEmail">
+<p> Email: 
+</p>
+</div>
+
+<div class ="footerEmailLink">
+<p><a href="mailto:Castillo.Trevor@Gmail.com?Subject=Hey%20there" target="_top">Castillo.Trevor@Gmail.Com </a>
+</p>
+</div>
+
+
+<div class="footerFollow">
+<p> Follow Me: </p>
+</div>
+
+<div class="SCFollowLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
+style="width:50px;height:50px:border:2px"></a> </div>
+
+<div class="TwitterFollowLink"> <a href="https://twitter.com/truephoriaTV" id="TwitterFollowLink"><img src="twitter_logo.png"
+style="width:50px;height:50px:border:0"></a> </div>
+
+<div class="GithubFollowLink"> <a href="https://github.com/Truephoria" id="GitHubFollowLink"><img src="githubLogo.png"
+style="width:50px;height:50px:border:0"></a> </div>
+
+<div class="IGFollowLink"> <a href="https://Instagram.com/Truephoria" id="IGFollowLink"><img src="igLogo.png"
+style="width:50px;height:50px:border:0"></a> </div>
+
+
+
+
+
+</body>
+</html>
