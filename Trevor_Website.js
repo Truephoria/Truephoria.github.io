@@ -57,7 +57,7 @@ function setup() {
   funny_Box = new Box();
   fCursor = new FunCursor();
   fCursorGrowInt = 0;
-  TronBGImg = loadImage("TronBackGroundImg.png");
+  //TronBGImg = loadImage("TronBackGroundImg.png");
   angleMode(DEGREES);
   cells.push(new Cell());
   cells.push(new Cell());
