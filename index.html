@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
+  
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
   <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
@@ -12,15 +12,22 @@
   <script language="javascript" type="text/javascript" src="Vehicle.js"></script>
   <script language="javascript" type="text/javascript" src="Trevor_Website.js"></script>
   <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
-
+  
   <!-- This line removes any default padding and style. 
-       You might only need one of these values set. -->
+       You might only need one of these values set. -->   
   <style> 
+  html {
+  background: url("TronBackGroundImg.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -mox-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  }
+  
 body {
     padding: 10; 
     margin: 5;
   } 
-
 
 #heading_Title {
   white-space: initial;
@@ -30,22 +37,18 @@ body {
   text-shadow: 2px 2px blue;
   position: absolute; 
   top: 10px;
-  //margin-top: 25px;
   margin-right: 100px;
   padding: 10px;
   right: 1;
   width:750px;
   height: 50px;
-  font-weight: bold;
-
+  //font-weight: bold;
 } 
 
 /* Style the header */
 .header {
   padding: 80px;
   text-align: center;
-  //border: 2px solid white;
-  //color: white;
 }
 
 /* Increase the font size of the h1 element */
@@ -53,93 +56,154 @@ body {
   font-size: 40px;
 }
 </style>
-
-<style>
 /* Style the top navigation bar */
 
-
+<style>
 /* Style the navigation bar links */
 .navbar a {
   color: red;
-  //color:blue;
-  
-  
 }
 
 .navbar a {
-  transform-style: preserve-3d;
-   transform: rotateZ(25deg);
-   
-  
-  font-size: 40px;
+  font-size: 25px;
   color: white;
-  text-align: center;
   float: left;
+  text-align: center;
   border: 2px solid white;
   display: grid;
-  //overflow: hidden;
-  background-color: black;
-  padding:20px 20px;
-  position:relative;
-   top: 80px;
-   
-  //transform: rotate(5deg);
-  
-  
-  transition-property: width;
+  background-color: none;
+  padding:10px;
+  margin-left: 15%;
+  transition-property: height;
   transition-duration: 1s;
-  width: 250px
-  
-  
-  
+  height: 5%;
+  width: 15%;
+  text-decoration: underline;
+  font-weight: bold;
 }
-
-
 
 /* Change color on hover */
 .navbar a:hover {
   background-color:red;
-  //position: absolute:
+  position: absolute:
   color: white;
-  border: 1px solid black;
-  width:235px;
-  
-  
+  border: 4px solid white;
+  height:7%;
+  width:15%;
+}
+</style>
+<style>
+.navbar b {
+  color: red;
+}
+.navbar b {
+  font-size: 25px;
+  color: white;
+  float: left;
+  text-align: center;
+  border: 2px solid white;
+  display: grid;
+  background-color: none;
+  padding:10px;
+  margin-left: 0%;
+  transition-property: height;
+  transition-duration: 1s;
+  height: 5%;
+  width:15%;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
+.navbar b:hover {
+  background-color:red;
+  position: absolute:
+  color: white;
+  border: 4px solid white;
+  height:7%;
+  width:15%;
+}
+</style>
+<style>
+.navbar c {
+  color: red;
+}
+.navbar c {
+  font-size: 25px;
+  color: white;
+  float: left;
+  text-align: center;
+  border: 2px solid white;
+  display: grid;
+  background-color: none;
+  padding:10px;
+  position:sticky;
+  margin-left: 0%;
+  transition-property: height;
+  transition-duration: 1s;
+  height: 5%;
+  width:15%;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.navbar c:hover {
+  background-color:red;
+  position: absolute:
+  color: white;
+  border: 4px solid white;
+  height:7%;
+  width:15%;
+}
+</style>
+<style>
+.navbar d {
+  color: red;
+}
+.navbar d {
+  font-size: 25px;
+  color: white;
+  float: left;
+  text-align: center;
+  border: 2px solid white;
+  display: grid;
+  background-color: none;
+  padding:10px;
+  margin-left:0%;
+  margin-right: 0%;
+  transition-property: height;
+  transition-duration: 1s;
+  height: 5%;
+  width:15%;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.navbar d:hover {
+  background-color:red;
+  position: absolute:
+  color: white;
+  border: 4px solid white;
+  height:7%;
+  width:15%;
+}
 
 </style>
 </head>
-
-
-
-
 <body>
 
 <h1 id="heading_Title"> </h1>
-
-
-
-</style>
-
 <div class="header">
   
 </div>
-
 <div class="navbar">
   <a href="https://soundcloud.com/naughty-robot">Music</a>
-  <a href="https://www.youtube.com/channel/UCI6wYFlMOgjCqRL6P4Vrhig">Game Projects</a>
-  <a href="https://github.com/Truephoria">Code Projects</a>
-  <a href="https://discord.gg/UvUyk6j">Discord</a>
+  <b href="https://www.youtube.com/channel/UCI6wYFlMOgjCqRL6P4Vrhig">Game Projects</b>
+  <c href="https://github.com/Truephoria">Code Projects</c>
+  <d href="https://discord.gg/UvUyk6j">Discord</d>
 </div>
-
-
-
-
 
 <p id="MusicText"> Here is a collection of some of my music I've shared publicly. <br> 
 You can contact me about remixes and collaborations as well.  </p>
-
 
 <style>
 #triangle-right-music {
@@ -149,9 +213,8 @@ You can contact me about remixes and collaborations as well.  </p>
   border-top: 20px solid transparent;
   border-left: 25px solid white;
   border-bottom: 20px solid transparent;
-  margin-top: 330px;
+  margin-top: 312px;
   margin-left: 170px;
-  //visibility: hidden;
   opacity:.75;
 }
 #triangle-right-music:hover {
@@ -159,31 +222,22 @@ You can contact me about remixes and collaborations as well.  </p>
 }
 
 #triangle-left-music {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
   margin-top: -10px;
   margin-right: 100px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-left-music:hover{
 opacity:1;
-
 }
-
-
 </style>
 <div id="triangle-right-music"></div>
 <div id="triangle-left-music"></div>
-
-
 <style>
-
 #MusicText {
   white-space: initial;
   word-wrap:break-word;
@@ -195,68 +249,49 @@ opacity:1;
   margin-top: 50px;
   margin-right: 0px;
   padding: 10px;
-  right: 1;
   width:1225px;
   height: 50px;
 }
-
 </style>
-
-
-
 <p id="GameProjectsText"> I'm currently developing a game 
 within Unreal Engine. <br>I've also created some game mechanics and other fun effects. <br> 
 You can check out them out here.
 </p>
-
-
 <style>
 #triangle-right-GProjects {
   position:relative
-  //width: 0;
-  //height: 0;
+  width: 0;
+  height: 0;
   border-top: 20px solid transparent;
   border-left: 25px solid white;
   border-bottom: 20px solid transparent;
   margin-top: 190px;
   margin-left: 170px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-right-GProjects:hover {
  opacity:1;
 }
 </style>
-
 <div id="triangle-right-GProjects"></div>
-
-
 <style>
 #triangle-left-GProjects {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
   margin-top: -10px;
   margin-right: 100px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-left-GProjects:hover{
 opacity:1;
 }
-
 </style>
-
 <div id="triangle-left-GProjects"></div>
-
-
 <style>
-
 #GameProjectsText {
   white-space: initial;
   word-wrap:break-word;
@@ -268,68 +303,50 @@ opacity:1;
   margin-top: 60px;
   margin-right: 0px;
   padding: 10px;
-  right: 1;
   width:1225px;
   height: 50px;
 }
-
 </style>
-
-
 <p id="CodeProjectsText"> Visit my GitHub repository for some silly coding snippets <br>
 along with more serious projects I've been coding. <br> 
 Always learning, and always creating! 
 </p>
-
-
 <style>
 #triangle-right-CodeProjects {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
+  width: 0;
+  height: 0;
   border-top: 20px solid transparent;
   border-left: 25px solid white;
   border-bottom: 20px solid transparent;
   margin-top: 190px;
   margin-left: 170px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-right-CodeProjects:hover {
   opacity:1;
 }
 </style>
-
 <div id="triangle-right-CodeProjects"></div>
-
-
 <style>
 #triangle-left-CodeProjects {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
   margin-top: -10px;
   margin-right: 100px;
   opacity: .75;
-  //visibility: hidden;
 }
 
 #triangle-left-CodeProjects:hover{
 opacity:1;
 
 }
-
 </style>
-
 <div id="triangle-left-CodeProjects"></div>
-
-
 <style>
-
 #CodeProjectsText {
   white-space: initial;
   word-wrap:break-word;
@@ -341,55 +358,41 @@ opacity:1;
   margin-top: 60px;
   margin-right: 0px;
   padding: 10px;
-  right: 1;
   width:1225px;
   height: 50px;
 }
-
 </style>
-
-
 <p id="DiscordText"> If you like to chat and be around really cool people,<br>
 come join the Discord server I've created and let us know more about you! <br> 
 If you're shy, that's fine, we welcome anyone and everyone! 
 </p>
-
-
 <style>
 #triangle-right-Discord {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
+  width: 0;
+  height: 0;
   border-top: 20px solid transparent;
   border-left: 25px solid white;
   border-bottom: 20px solid transparent;
   margin-top: 290px;
   margin-left: 170px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-right-Discord:hover {
   opacity:1;
 }
 </style>
-
 <div id="triangle-right-Discord"></div>
-
-
-
 <style>
 #triangle-left-Discord {
-  position:relative
-  //width: 0;
-  //height: 0;
+  position:relative;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
   margin-top: -10px;
   margin-right: 100px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 #triangle-left-Discord:hover {
@@ -397,11 +400,8 @@ opacity:1;
 
 }
 </style>
-
 <div id="triangle-left-Discord"></div>
-
 <style>
-
 #DiscordText {
   white-space: initial;
   word-wrap:break-word;
@@ -411,19 +411,13 @@ opacity:1;
   position: absolute; 
   top: 1480px;
   margin-top: 60px;
-  margin-right: 0px;
+  margin-left: 0px;
   padding: 10px;
-  right: 1;
   width:1225px;
   height: 50px;
 }
-
 </style>
-
-
 <style>
-
-
 div.SCLink{
   position: absolute;
   top: 450px; 
@@ -435,20 +429,11 @@ div.SCLink{
 
 div.SCLink:hover{
 opacity:1;
-
-
 }
-
-
-  </style>
- 
+</style>
 <div class="SCLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
 style="width:250px;height:250px:border:0"></a> </div>
-
-
 <style>
-
-
 div.Game_Proj_Link{
   position: absolute;
   top: 735px; 
@@ -459,19 +444,11 @@ div.Game_Proj_Link{
 }
  div.Game_Proj_Link:hover{
  opacity:1;
- 
  }
-
-
-  </style>
- 
+</style>
 <div class="Game_Proj_Link"> <a href="https://www.youtube.com/channel/UCpFaTfmxUCKYW2CN6ishFCA" id="Game_Projects_Link"><img src="Pixel_Controller_2.png"
 style="width:250px;height:250px:border:0"></a> </div>
-
-
 <style>
-
-
 div.Code_Proj_Link{
   position: absolute;
   top: 1050px; 
@@ -479,23 +456,15 @@ div.Code_Proj_Link{
   width: 500px;
   height: 50px;
   opacity: .75;
-  //visibility: hidden;
 }
 
 div.Code_Proj_Link:hover{
 opacity:1;
 }
-
-
-  </style>
- 
+</style> 
 <div class="Code_Proj_Link"> <a href="https://github.com/Truephoria" id="Code_Projects_Link"><img src="SwanComputer_Assembled.png"
 style="width:250px;height:250px:border:0"></a> </div>
-
-
 <style>
-
-
 div.Discord_Link{
   position: absolute;
   top: 1450px; 
@@ -503,26 +472,20 @@ div.Discord_Link{
   width: 500px;
   height: 50px;
   opacity:.75;
-  //visibility: hidden;
 }
 
 div.Discord_Link:hover{
 opacity:1;
 }
-
-  </style>
- 
- 
- 
+</style>
 <div class="Discord_Link"> <a href="https://discord.gg/UvUyk6j" id="Discord_Join_Link"><img src="Discord_logo.png"
 style="width:250px;height:250px:border:0"></a> </div>
-
 <style>
-
 .footer {
    position: absolute;
    left:0;
-   bottom: -2000;
+   right:0;
+   margin-top: 850px;
    font-size: 35px;
    text-align: Center;
    height: 260px;
@@ -531,81 +494,59 @@ style="width:250px;height:250px:border:0"></a> </div>
    color: white;
    text-indent: 50px;
    text-shadow: 4px 4px black;
-   //opacity: .5;
 }
 
 .footer:hover {
-  opacity:1;
-  
+  opacity:1; 
 }
-
 </style>
-
 <style>
-
 .footerEmail {
    position: absolute;
    left:0;
-   bottom: -1975;
+   margin-top: 925;
    font-size: 25px;
    text-shadow: 2px 2px black;
    height: 150px;
    width: 40%;
-   //background-color: red;
    color: white;
    text-indent: 50px;
    text-shadow: 2px 2px black;
-  
 }
 .footerEmailLink {
    position: absolute;
-   left:75;
-   bottom: -1975;
+   margin-top: 925px;
+   margin-left:65px;
    font-size: 25px;
-   
-   height: 150px;
    width: 40%;
-   //background-color: red;
    color: white;
    text-indent: 50px;
-   
-  
 }
 
 .footerEmailLink:hover {
   font-size: 30px;
-  bottom: -1965;
+  margin-top: 918px;
 }
-
 </style>
-
 <style>
-
 .footerFollow {
    position: absolute;
    right:255px;
-   bottom: -1975;
+   margin-top: 925px;
    font-size: 25px;
    text-align: right;
    height: 150px;
    width: 25%;
-   //background-color: red;
    color: white;
-  text-shadow: 2px 2px black;
-  
-   
+   text-shadow: 2px 2px black;  
 }
-
-
-
-
-
-
+</style>
+<style>
 div.TwitterFollowLink{
-  position: relative;
-  top: 795; 
-  left: 1035;
- 
+  position: absolute;
+  margin-top: 945px;
+  margin-right: 175px;
+  right: 0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -616,9 +557,10 @@ div.TwitterFollowLink:hover{
 }
 
 div.SCFollowLink{
-  position: relative;
-  top: 845; 
-  left: 1095;
+  position: absolute;
+  margin-top: 945px;
+  margin-right: 25px;
+  right:0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -629,9 +571,10 @@ div.SCFollowLink:hover{
 }
 
 div.GithubFollowLink{
-  position: relative;
-  top: 800; 
-  left: 1035;
+  position: absolute;
+  margin-top: 945px;
+  margin-right: 100px;
+  right: 0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -640,28 +583,10 @@ div.GithubFollowLink{
 div.GithubFollowLink:hover{
   opacity:1;
 }
-
-div.IGFollowLink{
-  position: relative;
-  top: 750; 
-  left: 1095;
-  width: 50px;
-  height: 50px;
-  opacity:.75;
-}
-
-div.IGFollowLink:hover{
-  opacity:1;
-}
-
-
-
 </style>
-
 <div class="footer">
-  <p>Contact</p> 
+<p>Contact</p> 
 </div>
-
 
 <div class ="footerEmail">
 <p> Email: 
@@ -673,7 +598,6 @@ div.IGFollowLink:hover{
 </p>
 </div>
 
-
 <div class="footerFollow">
 <p> Follow Me: </p>
 </div>
@@ -681,18 +605,11 @@ div.IGFollowLink:hover{
 <div class="SCFollowLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
 style="width:50px;height:50px:border:2px"></a> </div>
 
-<div class="TwitterFollowLink"> <a href="https://twitter.com/truephoriaTV" id="TwitterFollowLink"><img src="twitter_logo.png"
-style="width:50px;height:50px:border:0"></a> </div>
+<div class="TwitterFollowLink"> <b href="https://twitter.com/truephoriaTV" id="TwitterFollowLink"><img src="twitter_logo.png"
+style="width:50px;height:50px:border:2px"></b> </div>
 
-<div class="GithubFollowLink"> <a href="https://github.com/Truephoria" id="GitHubFollowLink"><img src="githubLogo.png"
-style="width:50px;height:50px:border:0"></a> </div>
-
-<div class="IGFollowLink"> <a href="https://Instagram.com/Truephoria" id="IGFollowLink"><img src="igLogo.png"
-style="width:50px;height:50px:border:0"></a> </div>
-
-
-
-
+<div class="GithubFollowLink"> <c href="https://github.com/Truephoria" id="GitHubFollowLink"><img src="githubLogo.png"
+style="width:50px;height:50px:border:2px"></c> </div>
 
 </body>
 </html>
