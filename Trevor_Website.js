@@ -29,7 +29,7 @@ font = loadFont('RussoOne-Regular.ttf');
 }
 
 function setup() {
-  canvas = createCanvas(windowWidth, 2500);
+  canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0,0);
   canvas.style('z-index', '-1');
   heading_Title = document.getElementById("heading_Title");
