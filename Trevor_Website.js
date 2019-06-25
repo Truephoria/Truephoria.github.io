@@ -29,7 +29,7 @@ font = loadFont('RussoOne-Regular.ttf');
 }
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, 2500);
   canvas.position(0,0);
   canvas.style('z-index', '-1');
   heading_Title = document.getElementById("heading_Title");
@@ -57,7 +57,6 @@ function setup() {
   funny_Box = new Box();
   fCursor = new FunCursor();
   fCursorGrowInt = 0;
-  //TronBGImg = loadImage("TronBackGroundImg.png");
   angleMode(DEGREES);
   cells.push(new Cell());
   cells.push(new Cell());
@@ -97,8 +96,7 @@ function setup() {
 }
 
 function draw() {
-  background(TronBGImg);
- 
+ clear();
  //Init Time Variables
   var hr = hour();
   var mn = minute();
@@ -106,11 +104,92 @@ function draw() {
   var mil = millis();
   var zeroHolder = "0";
   var secZeroHolder = "0";
+
+ //MUSIC BOX SCALE TICK
+ if(!SChiddenLink)
+     {
+     x = windowWidth - (windowWidth/4);
+     y = windowHeight/4;
+     xx = lerp(music_Box.sizeX ,x,.2);
+     yy = lerp(music_Box.sizeY ,y,.2);
+     music_Box.sizeX = xx;
+     music_Box.sizeY = yy;
+     }
+ else
+     {
+     x = 200;
+     y = 50;
+     xx = lerp(music_Box.sizeX ,x,.2);
+     yy = lerp(music_Box.sizeY ,y,.2);
+     music_Box.sizeX = xx;
+     music_Box.sizeY = yy;
+     };
+     
+ //GAMEPROJECTS SCALE TICK
+ if(!Game_Proj_HiddenLink)
+     {
+     x = windowWidth - (windowWidth/4);
+     y = windowHeight/4;
+     xx = lerp(game_Projects_Box.sizeX ,x,.2);
+     yy = lerp(game_Projects_Box.sizeY ,y,.2);
+     game_Projects_Box.sizeX = xx;
+     game_Projects_Box.sizeY = yy;
+     }
+ else
+     {
+     x = 200;
+     y = 50;
+     xx = lerp(game_Projects_Box.sizeX ,x,.2);
+     yy = lerp(game_Projects_Box.sizeY ,y,.2);
+     game_Projects_Box.sizeX = xx;
+     game_Projects_Box.sizeY = yy;
+     };
+ 
+ //CODING PROJECTS BOX SCALE TICK
+ if(!Code_Proj_HiddenLink)
+     {
+     x = windowWidth - (windowWidth/4);
+     y = windowHeight/4;
+     xx = lerp(coding_Projects_Box.sizeX ,x,.2);
+     yy = lerp(coding_Projects_Box.sizeY ,y,.2);
+     coding_Projects_Box.sizeX = xx;
+     coding_Projects_Box.sizeY = yy;
+     }
+ else
+     {
+     x = 200;
+     y = 50;
+     xx = lerp(coding_Projects_Box.sizeX ,x,.2);
+     yy = lerp(coding_Projects_Box.sizeY ,y,.2);
+     coding_Projects_Box.sizeX = xx;
+     coding_Projects_Box.sizeY = yy;
+     };
+ 
+ //DISCORD BOX SCALE TICK
+ if(!Discord_HiddenLink)
+     {
+     x = windowWidth - (windowWidth/4);
+     y = windowHeight/4;
+     xx = lerp(discord_Box.sizeX ,x,.2);
+     yy = lerp(discord_Box.sizeY ,y,.2);
+     discord_Box.sizeX = xx;
+     discord_Box.sizeY = yy;
+     }
+ else
+     {
+     x = 200;
+     y = 50;
+     xx = lerp(discord_Box.sizeX ,x,.2);
+     yy = lerp(discord_Box.sizeY ,y,.2);
+     discord_Box.sizeX = xx;
+     discord_Box.sizeY = yy;
+     };
  
   //FunCursor//
-  if(fCursorGrowInt > 0){
-  fCursor.show();
-  fCursor.grow();
+  if(fCursorGrowInt > 0)
+  {
+    fCursor.show();
+    fCursor.grow();
   }
   
   //Cell//
@@ -181,7 +260,6 @@ function draw() {
   endShape();
   pop();
  
- 
   //Vehicles for Text
   push();
   for (var i = 0; i < vehicles.length; i++)
@@ -195,9 +273,7 @@ function draw() {
   }
   textFont(font);
   textSize(80);
-  text('Truephoria',width/2 -150 ,2150);
   pop();
- 
  
   //Virtual Clock
   if (sec > "9")
@@ -290,7 +366,7 @@ function draw() {
   }
   else
   {
-   fill(255,255,255);
+   fill(255,0,0);
    text('My Music', 45 ,535);
   }
   pop();
@@ -323,7 +399,7 @@ function draw() {
    text('Game Projects', 35, 835);
   }
   else{
-   fill(255,255,255);
+   fill(255,0,0);
    text('Game Projects', 35, 835);
   }
   pop();
@@ -360,7 +436,7 @@ function draw() {
   }
   else
   {
-   fill(255,255,255);
+   fill(255,0,0);
    text('Coding Projects', 29, 1135);
   }
   pop();
@@ -397,7 +473,7 @@ function draw() {
   }
   else
   {
-   fill(255,255,255);
+   fill(255,0,0);
    text('Discord', 55, 1535);
   }
   pop(); 
@@ -414,10 +490,6 @@ function changeTextColor(newColor)
 SCLink.style.color = "Orange";
 };
 
-function windowResize()
-{
-  resizeCanvas(windowWidth, 2500);
-}
 
 function mousePressed(){
   fCursorGrowInt++;
@@ -437,8 +509,6 @@ function mousePressed(){
    if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY)
    {
      timesClicked++;
-     music_Box.sizeX = windowWidth - (windowWidth/4)
-     music_Box.sizeY = windowHeight/4;
      SChiddenLink = false;
    }
   }
@@ -447,8 +517,6 @@ function mousePressed(){
       if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY)
       {
        timesClicked++;
-       music_Box.sizeX = 200;
-       music_Box.sizeY = 50;
        SChiddenLink = true;
       }
     }
@@ -457,12 +525,6 @@ if(mouseX > game_Projects_Box.posX && mouseX < game_Projects_Box.sizeX)
   if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY)
   {
      timesClicked++;
-     x = windowWidth - (windowWidth/4);
-     y = windowHeight/4;
-     xx = lerp(game_Projects_Box.sizeX ,x,1);
-     yy = lerp(game_Projects_Box.sizeY ,y,1);
-     game_Projects_Box.sizeX = xx;
-     game_Projects_Box.sizeY = yy;
      Game_Proj_HiddenLink = false;
    }
  }
@@ -471,8 +533,6 @@ if(mouseX > game_Projects_Box.posX && mouseX < game_Projects_Box.sizeX)
       if(mouseY > game_Projects_Box.posY && mouseY < 800 + game_Projects_Box.sizeY)
       {
        timesClicked++;
-       game_Projects_Box.sizeX = 200;
-       game_Projects_Box.sizeY = 50;
        Game_Proj_HiddenLink = true;
       }
     }
@@ -481,8 +541,6 @@ if(mouseX > coding_Projects_Box.posX && mouseX < coding_Projects_Box.sizeX)
    if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY)
    {
      timesClicked++;
-     coding_Projects_Box.sizeX = windowWidth - (windowWidth/4)
-     coding_Projects_Box.sizeY = windowHeight/4;
      Code_Proj_HiddenLink = false;
    }
 }
@@ -491,8 +549,6 @@ if(mouseX > coding_Projects_Box.posX && mouseX < coding_Projects_Box.sizeX)
      if(mouseY > coding_Projects_Box.posY && mouseY < 1100 + coding_Projects_Box.sizeY)
      { 
        timesClicked++;
-       coding_Projects_Box.sizeX = 200;
-       coding_Projects_Box.sizeY = 50;
        Code_Proj_HiddenLink = true;
      }
    }
@@ -501,8 +557,6 @@ if(mouseX > discord_Box.posX && mouseX < discord_Box.sizeX)
    if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY)
    {
      timesClicked++;
-     discord_Box.sizeX = windowWidth - (windowWidth/4)
-     discord_Box.sizeY = windowHeight/4;
      Discord_HiddenLink = false;
    }
 }
@@ -511,8 +565,6 @@ if(mouseX > discord_Box.posX && mouseX < discord_Box.sizeX)
    if(mouseY > discord_Box.posY && mouseY < 1500 + discord_Box.sizeY)
     { 
       timesClicked++;
-      discord_Box.sizeX = 200;
-      discord_Box.sizeY = 50;
       Discord_HiddenLink = true;
     }
   }
