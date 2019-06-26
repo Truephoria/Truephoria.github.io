@@ -26,14 +26,7 @@ var RoseRingLimiter = 0;
 
 function preload(){
 font = loadFont('RussoOne-Regular.ttf');
-}
-
-function setup() {
-  canvas = createCanvas(windowWidth, 2500);
-  canvas.position(0,0);
-  canvas.style('z-index', '-1');
-  heading_Title = document.getElementById("heading_Title");
-  SCLink =  document.getElementById("soundcloudLink");
+SCLink =  document.getElementById("soundcloudLink");
   Discord_Link = document.getElementById("Discord_Join_Link");
   Game_Proj_Link = document.getElementById("Game_Projects_Link");
   Code_Proj_Link = document.getElementById("Code_Projects_Link");
@@ -41,14 +34,24 @@ function setup() {
   GameProjectsText = document.getElementById("GameProjectsText");
   CodeProjectsText = document.getElementById("CodeProjectsText");
   DiscordText = document.getElementById("DiscordText");  
-  MusicArrowRight = document.getElementById("triangle-right-music");
-  MusicArrowLeft = document.getElementById("triangle-left-music");
-  GameProjectArrowRight = document.getElementById("triangle-right-GProjects");
-  GameProjectArrowLeft = document.getElementById("triangle-left-GProjects");
-  CodingProjectArrowRight = document.getElementById("triangle-right-CodeProjects"); 
-  CodingProjectArrowLeft = document.getElementById("triangle-left-CodeProjects"); 
-  DiscordArrowRight = document.getElementById("triangle-right-Discord");
-  DiscordArrowLeft = document.getElementById("triangle-left-Discord");
+  
+  
+  SCLink.hidden = true;
+  Discord_Link.hidden = true;
+  Code_Proj_Link.hidden = true;
+  Game_Proj_Link.hidden = true;
+  MusicText.hidden = true;
+  GameProjectsText.hidden = true;
+  CodeProjectsText.hidden = true;
+  DiscordText.hidden = true;
+}
+
+function setup() {
+  canvas = createCanvas(windowWidth, 2550);
+  canvas.position(0,0);
+  canvas.style('z-index', '-1');
+  heading_Title = document.getElementById("heading_Title");
+  
   backGroundColor = color(200);
   music_Box = new Box();
   game_Projects_Box = new Box();
@@ -60,11 +63,15 @@ function setup() {
   angleMode(DEGREES);
   cells.push(new Cell());
   cells.push(new Cell());
-  fontPoints = font.textToPoints('Truephoria',width/2 -400 ,130,150);
+  fontPoints = font.textToPoints('Truephoria',windowWidth/2 -400 ,130,150);
   rFill = 0;
   k = 7;
   n = 1;
   rotX = 0;
+  
+  //Init Bools
+  
+  
 
 //Music Box Setup
   music_Box.size(200, 50, 40);
@@ -227,7 +234,7 @@ function draw() {
   rotX++
   push();
   beginShape();
-  translate(width/2,height/2)
+  translate(windowWidth/2,windowHeight/2)
   fill(0,255,255);
   stroke(0,255,255);
   strokeWeight(10);
@@ -285,7 +292,7 @@ function draw() {
    zeroHolder = ""
   };
   push();
-  translate(width/2,1900)
+  translate(windowWidth/2,1900)
   rotate(-90);
   noFill();
   strokeWeight(8);
@@ -300,7 +307,7 @@ function draw() {
   pop();
   
   push();
-  translate(width/2,1900)
+  translate(windowWidth/2,1900)
   rotate(-90);
   noFill();
   strokeWeight(6);
@@ -315,7 +322,7 @@ function draw() {
   pop();
   
   push();
-  translate(width/2,1900)
+  translate(windowWidth/2,1900)
   rotate(-90);
   noFill();
   strokeWeight(4);
@@ -333,7 +340,7 @@ function draw() {
   fill(0,255,255);
   textFont(font);
   textSize(30);
-  text(hr + " : " + zeroHolder + mn + " : " + secZeroHolder + sec, width/2 -75 ,2105);
+  text(hr + " : " + zeroHolder + mn + " : " + secZeroHolder + sec, windowWidth/2 -75 ,2105);
   pop();
   
 //Music Box
@@ -341,20 +348,6 @@ function draw() {
   stroke(255);
   strokeWeight(5);
   music_Box.display(); 
-  if(SChiddenLink == false){
-   SCLink.hidden = false;
-   MusicText.hidden = false;
-   MusicArrowRight.setAttribute("style", "border-left: 25px solid red");
-   MusicArrowRight.setAttribute("style", "opacity:0");
-   MusicArrowLeft.setAttribute("style", "border-right: 50px solid white");
-  }
-  if(SChiddenLink == true){
-   SCLink.hidden = true;
-   MusicText.hidden = true;
-   MusicArrowRight.setAttribute("style", "border-left: 25px solid white");
-   MusicArrowLeft.setAttribute("style", "border-right: 50px solid black");
-   MusicArrowLeft.setAttribute("style", "opacity:0;");
-  }
   pop();
   push()
   textSize(28);  
@@ -376,20 +369,6 @@ function draw() {
   stroke(255);
   strokeWeight(5); 
   game_Projects_Box.display();
-  if(Game_Proj_HiddenLink == false){
-   Game_Proj_Link.hidden = false;
-   GameProjectsText.hidden = false;
-   GameProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
-   GameProjectArrowRight.setAttribute("style", "opacity: 0;");
-   GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
-  }
-  if(Game_Proj_HiddenLink == true){
-   Game_Proj_Link.hidden = true;
-   GameProjectsText.hidden = true;
-   GameProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
-   GameProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
-   GameProjectArrowLeft.setAttribute("style", "opacity: 0;");
-  }
   pop();
   push();
   textSize(21);
@@ -409,22 +388,6 @@ function draw() {
   stroke(255);
   strokeWeight(5); 
   coding_Projects_Box.display();
-  if(Code_Proj_HiddenLink == false)
-  {
-   Code_Proj_Link.hidden = false;
-   CodeProjectsText.hidden = false;
-   CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid red");
-   CodingProjectArrowRight.setAttribute("style", "opacity:0");
-   CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid white");
-  }
-  if(Code_Proj_HiddenLink == true)
-  {
-   Code_Proj_Link.hidden = true;
-   CodeProjectsText.hidden = true;
-   CodingProjectArrowRight.setAttribute("style", "border-left: 25px solid white");
-   CodingProjectArrowLeft.setAttribute("style", "border-right: 50px solid black");
-   CodingProjectArrowLeft.setAttribute("style", "opacity:0");
-  }
   pop();
   push();
   textSize(20);
@@ -446,22 +409,7 @@ function draw() {
   stroke(255);
   strokeWeight(5); 
   discord_Box.display();
-  if(Discord_HiddenLink == false)
-  {
-   Discord_Link.hidden = false;
-   DiscordText.hidden = false;
-   DiscordArrowRight.setAttribute("style", "border-left: 25px solid red");
-   DiscordArrowRight.setAttribute("style", "opacity:0");
-   DiscordArrowLeft.setAttribute("style", "border-right: 50px solid white");
-  }
-  if(Discord_HiddenLink == true)
-  {
-   Discord_Link.hidden = true;
-   DiscordText.hidden = true;
-   DiscordArrowRight.setAttribute("style", "border-left: 25px solid white");
-   DiscordArrowLeft.setAttribute("style", "border-right: 50px solid black");
-   DiscordArrowLeft.setAttribute("style", "opacity:0");
-  }
+  
   pop();
   push();
   textSize(30);
@@ -477,18 +425,64 @@ function draw() {
    text('Discord', 55, 1535);
   }
   pop(); 
+  
+  
+  //JQuery Mouse Hover Check for Boxes
+  $(".music_Rectangle").hover(
+    function(event) {
+        // The mouse has entered the element, can reference the element via 'this'
+        MusicText.hidden = false;
+        SCLink.hidden = false;
+    },
+    function (event) {
+        // The mouse has left the element, can reference the element via 'this'
+        MusicText.hidden = true;
+        SCLink.hidden = true;
+    } 
+ );
+ 
+ $(".gameProjects_Rectangle").hover(
+    function(event) {
+        // The mouse has entered the element, can reference the element via 'this'
+        GameProjectsText.hidden = false;
+        Game_Proj_Link.hidden = false;
+    },
+    function (event) {
+        // The mouse has left the element, can reference the element via 'this'
+        GameProjectsText.hidden = true;
+        Game_Proj_Link.hidden = true;
+    } 
+ );
+ 
+ $(".codeProjects_Rectangle").hover(
+    function(event) {
+        // The mouse has entered the element, can reference the element via 'this'
+        CodeProjectsText.hidden = false;
+        Code_Proj_Link.hidden = false;
+    },
+    function (event) {
+        // The mouse has left the element, can reference the element via 'this'
+        CodeProjectsText.hidden = true;
+        Code_Proj_Link.hidden = true;
+    } 
+ );
+ 
+ $(".discord_Rectangle").hover(
+    function(event) {
+        // The mouse has entered the element, can reference the element via 'this'
+        DiscordText.hidden = false;
+        Discord_Link.hidden = false;
+    },
+    function (event) {
+        // The mouse has left the element, can reference the element via 'this'
+        DiscordText.hidden = true;
+        Discord_Link.hidden = true;
+    } 
+ );
+ 
+ 
+  
 }
-
-
-function changeBGColor()
-{
-  backGroundColor = color(random(255));
-};
-
-function changeTextColor(newColor)
-{
-SCLink.style.color = "Orange";
-};
 
 
 function mousePressed(){
@@ -569,3 +563,7 @@ if(mouseX > discord_Box.posX && mouseX < discord_Box.sizeX)
     }
   }
 };
+
+
+
+
