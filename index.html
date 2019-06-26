@@ -28,20 +28,21 @@ body {
     padding: 10; 
     margin: 5;
   } 
+  
 
 #heading_Title {
-  white-space: initial;
-  word-wrap:break-word;
+  //white-space: initial;
+  //word-wrap:break-word;
   color: white;
-  font-size: 50;
+  //font-size: 50;
   text-shadow: 2px 2px blue;
-  position: absolute; 
-  top: 10px;
-  margin-right: 100px;
-  padding: 10px;
-  right: 1;
-  width:750px;
-  height: 50px;
+  //position: absolute; 
+  //top: 10px;
+  //margin-right: 100px;
+  //padding: 10px;
+  //right: 1;
+  //width:750px;
+  //height: 50px;
   //font-weight: bold;
 } 
 
@@ -53,19 +54,21 @@ body {
 
 /* Increase the font size of the h1 element */
 .header h1 {
-  font-size: 40px;
+  //font-size: 10px;
 }
 
-/* Style the top navigation bar */
+</style>
+</head>
 
+<body>
 <style>
 /* Style the navigation bar links */
-.navbar a {
+.navbar_Music {
   color: red;
 }
 
-.navbar a {
-  font-size: 25px;
+.navbar_Music {
+  font-size: 2.5vw;
   color: white;
   float: left;
   text-align: center;
@@ -83,7 +86,7 @@ body {
 }
 
 /* Change color on hover */
-.navbar a:hover {
+.navbar_Music:hover {
   background-color:red;
   position: absolute:
   color: white;
@@ -91,13 +94,12 @@ body {
   height:7%;
   width:15%;
 }
-</style>
-<style>
-.navbar b {
+
+.navbar_GameProjects {
   color: red;
 }
-.navbar b {
-  font-size: 25px;
+.navbar_GameProjects {
+  font-size: 2.3vw;
   color: white;
   float: left;
   text-align: center;
@@ -114,7 +116,7 @@ body {
   font-weight: bold;
 }
 
-.navbar b:hover {
+.navbar_GameProjects:hover {
   background-color:red;
   position: absolute:
   color: white;
@@ -122,13 +124,12 @@ body {
   height:7%;
   width:15%;
 }
-</style>
-<style>
-.navbar c {
+
+.navbar_CodeProjects {
   color: red;
 }
-.navbar c {
-  font-size: 25px;
+.navbar_CodeProjects {
+  font-size: 2.423vw;
   color: white;
   float: left;
   text-align: center;
@@ -146,7 +147,7 @@ body {
   font-weight: bold;
 }
 
-.navbar c:hover {
+.navbar_CodeProjects:hover {
   background-color:red;
   position: absolute:
   color: white;
@@ -154,13 +155,12 @@ body {
   height:7%;
   width:15%;
 }
-</style>
-<style>
-.navbar d {
+
+.navbar_Discord {
   color: red;
 }
-.navbar d {
-  font-size: 25px;
+.navbar_Discord {
+  font-size: 2.5vw;
   color: white;
   float: left;
   text-align: center;
@@ -169,7 +169,7 @@ body {
   background-color: none;
   padding:10px;
   margin-left:0%;
-  margin-right: 0%;
+  //margin-right: 0%;
   transition-property: height;
   transition-duration: 1s;
   height: 5%;
@@ -178,7 +178,7 @@ body {
   font-weight: bold;
 }
 
-.navbar d:hover {
+.navbar_Discord:hover {
   background-color:red;
   position: absolute:
   color: white;
@@ -188,41 +188,35 @@ body {
 }
 
 </style>
-</head>
-<body>
 
 <h1 id="heading_Title"> </h1>
 <div class="header">
-  
-</div>
-<div class="navbar">
-  <a href="https://soundcloud.com/naughty-robot">Music</a>
-  <b href="https://www.youtube.com/channel/UCI6wYFlMOgjCqRL6P4Vrhig">Game Projects</b>
-  <c href="https://github.com/Truephoria">Code Projects</c>
-  <d href="https://discord.gg/UvUyk6j">Discord</d>
+
 </div>
 
-<p id="MusicText"> Here is a collection of some of my music I've shared publicly. <br> 
-You can contact me about remixes and collaborations as well.  </p>
+<div class="navbar_Music">
+  <a href="https://soundcloud.com/naughty-robot">Music</a>
+</div>
+
+
+<div class="navbar_GameProjects">
+<a href="https://www.youtube.com/channel/UCI6wYFlMOgjCqRL6P4Vrhig">Game Projects</a>
+</div>
+
+
+<div class="navbar_CodeProjects">
+<a href="https://github.com/Truephoria">Code Projects</a>
+</div>
+
+
+<div class="navbar_Discord">
+<a href="https://discord.gg/UvUyk6j">Discord</a>
+</div>
 
 <style>
-#triangle-right-music {
-  position:relative;
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-left: 25px solid white;
-  border-bottom: 20px solid transparent;
-  margin-top: 312px;
-  margin-left: 170px;
-  opacity:.75;
-}
-#triangle-right-music:hover {
-  opacity:1;
-}
 
 #triangle-left-music {
-  position:relative;
+  position:absolute;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
@@ -234,15 +228,13 @@ You can contact me about remixes and collaborations as well.  </p>
 #triangle-left-music:hover{
 opacity:1;
 }
-</style>
-<div id="triangle-right-music"></div>
-<div id="triangle-left-music"></div>
-<style>
+
 #MusicText {
   white-space: initial;
   word-wrap:break-word;
   color: white;
-  font-size: 24;
+  //font-size: 24;
+  font-size: 2.6vw;
   text-shadow: 2px 1px #000000;
   position: absolute; 
   top: 500px;
@@ -253,50 +245,30 @@ opacity:1;
   height: 50px;
 }
 </style>
-<p id="GameProjectsText"> I'm currently developing a game 
-within Unreal Engine. <br>I've also created some game mechanics and other fun effects. <br> 
-You can check out them out here.
-</p>
-<style>
-#triangle-right-GProjects {
-  position:relative
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-left: 25px solid white;
-  border-bottom: 20px solid transparent;
-  margin-top: 190px;
-  margin-left: 170px;
-  opacity:.75;
-}
 
-#triangle-right-GProjects:hover {
- opacity:1;
-}
-</style>
-<div id="triangle-right-GProjects"></div>
 <style>
+
+
 #triangle-left-GProjects {
-  position:relative;
+  position:absolute;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
-  margin-top: -10px;
-  margin-right: 100px;
+  margin-top: 200px;
+  width: 80%;
   opacity:.75;
 }
 
 #triangle-left-GProjects:hover{
 opacity:1;
 }
-</style>
-<div id="triangle-left-GProjects"></div>
-<style>
+
 #GameProjectsText {
   white-space: initial;
   word-wrap:break-word;
   color: white;
-  font-size: 22;
+  //font-size: 22;
+  font-size: 2.4vw;
   text-shadow: 2px 1px #000000;
   position: absolute; 
   top: 780px;
@@ -307,36 +279,18 @@ opacity:1;
   height: 50px;
 }
 </style>
-<p id="CodeProjectsText"> Visit my GitHub repository for some silly coding snippets <br>
-along with more serious projects I've been coding. <br> 
-Always learning, and always creating! 
-</p>
-<style>
-#triangle-right-CodeProjects {
-  position:relative;
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-left: 25px solid white;
-  border-bottom: 20px solid transparent;
-  margin-top: 190px;
-  margin-left: 170px;
-  opacity:.75;
-}
 
-#triangle-right-CodeProjects:hover {
-  opacity:1;
-}
-</style>
-<div id="triangle-right-CodeProjects"></div>
+
 <style>
+
+
 #triangle-left-CodeProjects {
-  position:relative;
+  position:absolute;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
-  margin-top: -10px;
-  margin-right: 100px;
+  margin-top: 700px;
+  width: 80%;
   opacity: .75;
 }
 
@@ -344,54 +298,35 @@ Always learning, and always creating!
 opacity:1;
 
 }
-</style>
-<div id="triangle-left-CodeProjects"></div>
-<style>
+
 #CodeProjectsText {
   white-space: initial;
   word-wrap:break-word;
   color: white;
-  font-size: 22;
+  //font-size: 22;
+  font-size: 2.4vw;
   text-shadow: 2px 1px #000000;
   position: absolute; 
   top: 1080px;
   margin-top: 60px;
-  margin-right: 0px;
+  //margin-right: 0px;
   padding: 10px;
   width:1225px;
   height: 50px;
 }
 </style>
-<p id="DiscordText"> If you like to chat and be around really cool people,<br>
-come join the Discord server I've created and let us know more about you! <br> 
-If you're shy, that's fine, we welcome anyone and everyone! 
-</p>
-<style>
-#triangle-right-Discord {
-  position:relative;
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-left: 25px solid white;
-  border-bottom: 20px solid transparent;
-  margin-top: 290px;
-  margin-left: 170px;
-  opacity:.75;
-}
 
-#triangle-right-Discord:hover {
-  opacity:1;
-}
-</style>
-<div id="triangle-right-Discord"></div>
 <style>
+
+
 #triangle-left-Discord {
-  position:relative;
+  position:absolute;
   border-top: 40px solid transparent;
   border-right: 50px solid black;
   border-bottom: 40px solid transparent;
-  margin-top: -10px;
-  margin-right: 100px;
+  
+  margin-top: 1100px;
+  width: 80%;
   opacity:.75;
 }
 
@@ -399,32 +334,35 @@ If you're shy, that's fine, we welcome anyone and everyone!
 opacity:1;
 
 }
-</style>
-<div id="triangle-left-Discord"></div>
-<style>
+
 #DiscordText {
   white-space: initial;
   word-wrap:break-word;
   color: white;
-  font-size: 22;
+  //font-size: 22;
+  font-size: 2.4vw;
   text-shadow: 2px 1px #000000;
   position: absolute; 
   top: 1480px;
   margin-top: 60px;
-  margin-left: 0px;
+  margin-right: 0px;
   padding: 10px;
   width:1225px;
   height: 50px;
 }
 </style>
+
+
+
+
 <style>
 div.SCLink{
   position: absolute;
-  margin-top: -88%; 
-  margin-left:64%;
-  //right: 1;
-  width: 500px;
-  height: 50px;
+  right:0;
+  top:500px;;
+  //margin-top: 8.8vw; 
+  margin-right:6.4vw;
+  
   opacity: .75;
 }
 
@@ -432,13 +370,11 @@ div.SCLink:hover{
 opacity:1;
 }
 </style>
-<div class="SCLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
-style="width:100px;height:100px:border:0"></a> </div>
+
 <style>
 div.Game_Proj_Link{
   position: absolute;
   top: 735px; 
- // right: 1;
   width: 545px;
   height: 50px;
   opacity: .75;
@@ -447,13 +383,11 @@ div.Game_Proj_Link{
  opacity:1;
  }
 </style>
-<div class="Game_Proj_Link"> <a href="https://www.youtube.com/channel/UCpFaTfmxUCKYW2CN6ishFCA" id="Game_Projects_Link"><img src="Pixel_Controller_2.png"
-style="width:250px;height:250px:border:0"></a> </div>
+
 <style>
 div.Code_Proj_Link{
   position: absolute;
   top: 1050px; 
-  //right: 1;
   width: 500px;
   height: 50px;
   opacity: .75;
@@ -463,13 +397,11 @@ div.Code_Proj_Link:hover{
 opacity:1;
 }
 </style> 
-<div class="Code_Proj_Link"> <a href="https://github.com/Truephoria" id="Code_Projects_Link"><img src="SwanComputer_Assembled.png"
-style="width:250px;height:250px:border:0"></a> </div>
+
 <style>
 div.Discord_Link{
   position: absolute;
   top: 1450px; 
-  //right: 1;
   width: 500px;
   height: 50px;
   opacity:.75;
@@ -478,23 +410,25 @@ div.Discord_Link{
 div.Discord_Link:hover{
 opacity:1;
 }
+
 </style>
-<div class="Discord_Link"> <a href="https://discord.gg/UvUyk6j" id="Discord_Join_Link"><img src="Discord_logo.png"
-style="width:100px;height:100px:border:0"></a> </div>
+
 <style>
 .footer {
    position: absolute;
+   
    left:0;
    right:0;
-   margin-top: 850px;
+   height: 50%;
+   width: 100%;
+   margin-top: 2050px;
    font-size: 35px;
    text-align: Center;
-   height: 260px;
-   width: 100%;
    background-color: red;
    color: white;
    text-indent: 50px;
    text-shadow: 4px 4px black;
+   
 }
 
 .footer:hover {
@@ -504,50 +438,54 @@ style="width:100px;height:100px:border:0"></a> </div>
 <style>
 .footerEmail {
    position: absolute;
-   left:0;
-   margin-top: 925;
+   //left:0;
+   margin-top: 1925;
    font-size: 25px;
    text-shadow: 2px 2px black;
-   height: 150px;
-   width: 40%;
+   //height: 150px;
+   //width: 40%;
    color: white;
    text-indent: 50px;
    text-shadow: 2px 2px black;
 }
+</style>
+<style>
 .footerEmailLink {
    position: absolute;
-   margin-top: 925px;
-   margin-left:65px;
+   margin-top: 1925px;
+   //margin-left:65px;
    font-size: 25px;
-   width: 40%;
+   //width: 40%;
    color: white;
    text-indent: 50px;
 }
 
 .footerEmailLink:hover {
   font-size: 30px;
-  margin-top: 918px;
+  margin-top: 1918px;
 }
 </style>
 <style>
 .footerFollow {
    position: absolute;
-   right:255px;
-   margin-top: 925px;
+   //right:255px;
+   margin-top: 1925px;
+   //margin-left:500px;
    font-size: 25px;
    text-align: right;
    height: 150px;
-   width: 25%;
+   //width: 25%;
    color: white;
    text-shadow: 2px 2px black;  
 }
 </style>
+
 <style>
 div.TwitterFollowLink{
   position: absolute;
-  margin-top: 945px;
-  margin-right: 175px;
-  right: 0;
+  margin-top: 1945px;
+  //margin-right: 175px;
+  //right: 0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -559,9 +497,9 @@ div.TwitterFollowLink:hover{
 
 div.SCFollowLink{
   position: absolute;
-  margin-top: 945px;
-  margin-right: 25px;
-  right:0;
+  margin-top: 1945px;
+  //margin-right: 25px;
+  //right:0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -573,9 +511,9 @@ div.SCFollowLink:hover{
 
 div.GithubFollowLink{
   position: absolute;
-  margin-top: 945px;
-  margin-right: 100px;
-  right: 0;
+  margin-top: 1945px;
+  //margin-right: 100px;
+  //right: 0;
   width: 50px;
   height: 50px;
   opacity:.75;
@@ -585,6 +523,47 @@ div.GithubFollowLink:hover{
   opacity:1;
 }
 </style>
+
+
+
+<p id="MusicText"> Here is a collection of some of my music I've shared publicly. <br> 
+You can contact me about remixes and collaborations as well.  
+</p>
+<div id="triangle-right-music"></div>
+<div id="triangle-left-music"></div>
+
+<p id="GameProjectsText"> I'm currently developing a game 
+within Unreal Engine. <br>I've also created some game mechanics and other fun effects. <br> 
+You can check out them out here.
+</p>
+<div id="triangle-right-GProjects"></div>
+<div id="triangle-left-GProjects"></div>
+
+<p id="CodeProjectsText"> Visit my GitHub repository for some silly coding snippets <br>
+along with more serious projects I've been coding. <br> 
+</p>
+<div id="triangle-right-CodeProjects"></div>
+<div id="triangle-left-CodeProjects"></div>
+
+<p id="DiscordText"> If you like to chat and be around really cool people,<br>
+come join the Discord server I've created and let us know more about you! <br> 
+If you're shy, that's fine, we welcome anyone and everyone! 
+</p>
+<div id="triangle-right-Discord"></div>
+<div id="triangle-left-Discord"></div>
+
+<div class="SCLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
+style="width:100px;height:100px:border:0"></a> </div>
+
+<div class="Game_Proj_Link"> <a href="https://www.youtube.com/channel/UCpFaTfmxUCKYW2CN6ishFCA" id="Game_Projects_Link"><img src="Pixel_Controller_2.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+<div class="Code_Proj_Link"> <a href="https://github.com/Truephoria" id="Code_Projects_Link"><img src="SwanComputer_Assembled.png"
+style="width:250px;height:250px:border:0"></a> </div>
+
+<div class="Discord_Link"> <a href="https://discord.gg/UvUyk6j" id="Discord_Join_Link"><img src="Discord_logo.png"
+style="width:100px;height:100px:border:0"></a> </div>
+
 <div class="footer">
 <p>Contact</p> 
 </div>
@@ -595,7 +574,7 @@ div.GithubFollowLink:hover{
 </div>
 
 <div class ="footerEmailLink">
-<p><a href="mailto:Castillo.Trevor@Gmail.com?Subject=Hey%20there" target="_top">Castillo.Trevor@Gmail.Com </a>
+<p><a href="mailto:Castillo.Trevor@Gmail.com?Subject='Ello%20good%20sir!" target="_top">Castillo.Trevor@Gmail.Com </a>
 </p>
 </div>
 
@@ -613,4 +592,5 @@ style="width:50px;height:50px:border:2px"></b> </div>
 style="width:50px;height:50px:border:2px"></c> </div>
 
 </body>
+
 </html>
