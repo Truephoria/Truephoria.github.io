@@ -8,6 +8,7 @@
   <script language="javascript" type="text/javascript" src="Box.js"></script>
   <script language="javascript" type="text/javascript" src="Cell.js"></script>
   <script language="javascript" type="text/javascript" src="FunCursor.js"></script>
+  <script language="javascript" type="text/javascript" src="JQuery.js"></script>
   <script language="javascript" type="text/javascript" src="RoseRing.js"></script>
   <script language="javascript" type="text/javascript" src="Vehicle.js"></script>
   <script language="javascript" type="text/javascript" src="Trevor_Website.js"></script>
@@ -74,7 +75,7 @@ body {
   text-align: center;
   border: 2px solid white;
   display: grid;
-  background-color: none;
+  background-color: black;
   padding:10px;
   margin-left: 15%;
   transition-property: height;
@@ -105,7 +106,7 @@ body {
   text-align: center;
   border: 2px solid white;
   display: grid;
-  background-color: none;
+  background-color: black;
   padding:10px;
   margin-left: 0%;
   transition-property: height;
@@ -135,7 +136,7 @@ body {
   text-align: center;
   border: 2px solid white;
   display: grid;
-  background-color: none;
+  background-color: black;
   padding:10px;
   position:sticky;
   margin-left: 0%;
@@ -166,7 +167,7 @@ body {
   text-align: center;
   border: 2px solid white;
   display: grid;
-  background-color: none;
+  background-color: black;
   padding:10px;
   margin-left:0%;
   //margin-right: 0%;
@@ -214,21 +215,6 @@ body {
 </div>
 
 <style>
-
-#triangle-left-music {
-  position:absolute;
-  border-top: 40px solid transparent;
-  border-right: 50px solid black;
-  border-bottom: 40px solid transparent;
-  margin-top: -10px;
-  margin-right: 100px;
-  opacity:.75;
-}
-
-#triangle-left-music:hover{
-opacity:1;
-}
-
 #MusicText {
   white-space: initial;
   word-wrap:break-word;
@@ -247,22 +233,6 @@ opacity:1;
 </style>
 
 <style>
-
-
-#triangle-left-GProjects {
-  position:absolute;
-  border-top: 40px solid transparent;
-  border-right: 50px solid black;
-  border-bottom: 40px solid transparent;
-  margin-top: 200px;
-  width: 80%;
-  opacity:.75;
-}
-
-#triangle-left-GProjects:hover{
-opacity:1;
-}
-
 #GameProjectsText {
   white-space: initial;
   word-wrap:break-word;
@@ -280,25 +250,7 @@ opacity:1;
 }
 </style>
 
-
 <style>
-
-
-#triangle-left-CodeProjects {
-  position:absolute;
-  border-top: 40px solid transparent;
-  border-right: 50px solid black;
-  border-bottom: 40px solid transparent;
-  margin-top: 700px;
-  width: 80%;
-  opacity: .75;
-}
-
-#triangle-left-CodeProjects:hover{
-opacity:1;
-
-}
-
 #CodeProjectsText {
   white-space: initial;
   word-wrap:break-word;
@@ -317,24 +269,6 @@ opacity:1;
 </style>
 
 <style>
-
-
-#triangle-left-Discord {
-  position:absolute;
-  border-top: 40px solid transparent;
-  border-right: 50px solid black;
-  border-bottom: 40px solid transparent;
-  
-  margin-top: 1100px;
-  width: 80%;
-  opacity:.75;
-}
-
-#triangle-left-Discord:hover {
-opacity:1;
-
-}
-
 #DiscordText {
   white-space: initial;
   word-wrap:break-word;
@@ -351,9 +285,6 @@ opacity:1;
   height: 50px;
 }
 </style>
-
-
-
 
 <style>
 div.SCLink{
@@ -410,13 +341,11 @@ div.Discord_Link{
 div.Discord_Link:hover{
 opacity:1;
 }
-
 </style>
 
 <style>
 .footer {
    position: absolute;
-   
    left:0;
    right:0;
    height: 50%;
@@ -427,14 +356,14 @@ opacity:1;
    background-color: red;
    color: white;
    text-indent: 50px;
-   text-shadow: 4px 4px black;
-   
+   text-shadow: 4px 4px black;  
 }
 
 .footer:hover {
   opacity:1; 
 }
 </style>
+
 <style>
 .footerEmail {
    position: absolute;
@@ -449,6 +378,7 @@ opacity:1;
    text-shadow: 2px 2px black;
 }
 </style>
+
 <style>
 .footerEmailLink {
    position: absolute;
@@ -465,6 +395,7 @@ opacity:1;
   margin-top: 1918px;
 }
 </style>
+
 <style>
 .footerFollow {
    position: absolute;
@@ -524,33 +455,27 @@ div.GithubFollowLink:hover{
 }
 </style>
 
-
-
 <p id="MusicText"> Here is a collection of some of my music I've shared publicly. <br> 
 You can contact me about remixes and collaborations as well.  
 </p>
-<div id="triangle-right-music"></div>
-<div id="triangle-left-music"></div>
+
 
 <p id="GameProjectsText"> I'm currently developing a game 
 within Unreal Engine. <br>I've also created some game mechanics and other fun effects. <br> 
 You can check out them out here.
 </p>
-<div id="triangle-right-GProjects"></div>
-<div id="triangle-left-GProjects"></div>
+
 
 <p id="CodeProjectsText"> Visit my GitHub repository for some silly coding snippets <br>
 along with more serious projects I've been coding. <br> 
 </p>
-<div id="triangle-right-CodeProjects"></div>
-<div id="triangle-left-CodeProjects"></div>
+
 
 <p id="DiscordText"> If you like to chat and be around really cool people,<br>
 come join the Discord server I've created and let us know more about you! <br> 
 If you're shy, that's fine, we welcome anyone and everyone! 
 </p>
-<div id="triangle-right-Discord"></div>
-<div id="triangle-left-Discord"></div>
+
 
 <div class="SCLink"> <a href="https://soundcloud.com/naughty-robot" id="soundcloudLink"><img src="Soundcloud-logo.png"
 style="width:100px;height:100px:border:0"></a> </div>
@@ -591,6 +516,92 @@ style="width:50px;height:50px:border:2px"></b> </div>
 <div class="GithubFollowLink"> <c href="https://github.com/Truephoria" id="GitHubFollowLink"><img src="githubLogo.png"
 style="width:50px;height:50px:border:2px"></c> </div>
 
+
+
+<div class="music_Rectangle">Music</div>
+<div class="gameProjects_Rectangle">Game Projects</div>
+<div class="codeProjects_Rectangle">Code Projects</div>
+<div class="discord_Rectangle">Discord</div>
+
+
+<style>
+.music_Rectangle{
+  position:absolute;
+  margin-top:270px;
+  left:1.0vw;
+  height:50px;
+  width: 10%;
+  background: #ca0164;
+  font-size:2.2vw;
+  text-align:center;
+  display: inline-block;
+  transition-property: width,height;     
+  transition-duration: 1s;
+}
+.music_Rectangle:hover{
+  left:1.0vw;
+  width: 80%;
+  height:10%;
+}
+
+.gameProjects_Rectangle{
+  position:absolute;
+  margin-top:570px;
+  left:1.0vw;
+  height:50px;
+  width: 10%;
+  background: #ca0164;
+  font-size:2.2vw;
+  text-align:center;
+  display: inline-block;
+  transition-property: width,height;     
+  transition-duration: 1s;
+}
+.gameProjects_Rectangle:hover{
+  left:1.0vw;
+  width: 80%;
+  height:10%;
+}
+
+.codeProjects_Rectangle{
+  position:absolute;
+  margin-top:870px;
+  left:1.0vw;
+  height:50px;
+  width: 10%;
+  background: #ca0164;
+  font-size:2.2vw;
+  text-align:center;
+  display: inline-block;
+  transition-property: width,height;     
+  transition-duration: 1s;
+}
+.codeProjects_Rectangle:hover{
+  left:1.0vw;
+  width: 80%;
+  height:10%;
+}
+
+.discord_Rectangle{
+  position:absolute;
+  margin-top:1170px;
+  left:1.0vw;
+  height:50px;
+  width: 10%;
+  background: #ca0164;
+  font-size:2.2vw;
+  text-align:center;
+  display: inline-block;
+  transition-property: width,height;     
+  transition-duration: 1s;
+}
+.discord_Rectangle:hover{
+  left:1.0vw;
+  width: 80%;
+  height:10%;
+}
+
+</style>
 </body>
 
 </html>
