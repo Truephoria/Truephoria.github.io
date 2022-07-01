@@ -408,6 +408,8 @@ function draw() {
   pop(); 
   
   
+  /*
+  
   //JQuery Mouse Hover Check for Boxes
   $(".music_Rectangle").hover(
     function(event) {
@@ -465,6 +467,7 @@ function draw() {
   
 }
 
+*/
 
 function mousePressed(){
   fCursorGrowInt++;
