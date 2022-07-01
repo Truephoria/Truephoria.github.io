@@ -18,7 +18,6 @@ var n;
 var rotX;
 var fCursor;
 var fCursorGrowInt;
-var cells = [];
 var RoseRings = [];
 var RingMaxReached = false;
 var RoseRingLimiter = 0;
@@ -61,9 +60,7 @@ function setup() {
   fCursor = new FunCursor();
   fCursorGrowInt = 0;
   angleMode(DEGREES);
-  cells.push(new Cell());
-  cells.push(new Cell());
-  fontPoints = font.textToPoints('Truephoria',windowWidth/2 -400 ,130,150);
+  fontPoints = font.textToPoints('Truephoria', windowWidth/2 -400, 130, 150);
   rFill = 0;
   k = 7;
   n = 1;
@@ -199,22 +196,6 @@ function draw() {
     fCursor.grow();
   }
   
-  //Cell//
-  push();
-  for (var i = 0; i < cells.length; i++)
-  {
-    cells[i].move();
-    cells[i].show();
-    cells[i].r += cos(sin(.01 * cells[i].r)*10);
-    if(cells[i].r > 50){
-     cells[i].r *= -1 
-  }
-   if(cells.length > 20)
-   {
-   cells.splice(i,1);
-   }
-  }
-  pop();
   
   //Rose Pattern//
   if(k <= 200000)
@@ -487,17 +468,7 @@ function draw() {
 
 function mousePressed(){
   fCursorGrowInt++;
-  //clicking cells//
-  for (var i = cells.length -1 ; i >= 0; i--)
- {
-  if (cells[i].clicked(mouseX, mouseY))
-  {
-    cells.push(cells[i].mitosis());
-    cells.push(cells[i].mitosis());
-    cells.splice(i, 1);
-    cells[i].split = true;
-  } 
- }
+  
   if(mouseX > music_Box.posX && mouseX < music_Box.sizeX)
   {
    if(mouseY > music_Box.posY && mouseY < 500 + music_Box.sizeY)
