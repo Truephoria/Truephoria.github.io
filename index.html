@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Truephoria — Music, Games &amp; Code</title>
+  <meta name="description" content="Truephoria: music production, game development and software projects.">
+  <meta name="theme-color" content="#07090c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090c'/%3E%3Cpath d='M16 18h32v8H36v22h-8V26H16z' fill='%2322d3ee'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Russo One";
+      src: url("assets/RussoOne-Regular.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #07090c;
+      --surface: #0d1117;
+      --surface-2: #111821;
+      --line: rgba(148, 163, 184, 0.14);
+      --line-strong: rgba(148, 163, 184, 0.28);
+      --text: #e6edf3;
+      --muted: #8b98a5;
+      --accent: #22d3ee;
+      --accent-ink: #04161b;
+      --radius: 14px;
+      --max: 1120px;
+      --display: "Russo One", "Inter", system-ui, sans-serif;
+      --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7, 9, 12, 0.72);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-family: var(--display); font-size: 20px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+    .brand-mark { width: 10px; height: 10px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+    .nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      display: block; padding: 8px 14px; border-radius: 8px;
+      color: var(--muted); font-size: 15px; font-weight: 500;
+      transition: color .2s, background-color .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--line-strong); color: var(--text); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 14px; cursor: pointer; }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+    }
+    .hero::after {
+      content: ""; position: absolute; left: 50%; top: 30%; width: 720px; height: 360px;
+      transform: translate(-50%, -50%); pointer-events: none;
+      background: radial-gradient(closest-side, rgba(34, 211, 238, 0.14), transparent);
+    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; padding: 72px 0 96px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 14px;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; }
+    .logo-stage { position: relative; width: 100%; height: clamp(150px, 22vw, 240px); margin: 28px 0 8px; }
+    .logo-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .hero p.lede { max-width: 560px; margin: 0 auto 36px; color: var(--muted); font-size: clamp(17px, 2vw, 20px); }
+    .hint { font-family: var(--mono); font-size: 12px; color: var(--muted); opacity: .7; margin-top: 28px; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 46px; padding: 0 22px; border-radius: 10px;
+      font-weight: 600; font-size: 15px;
+      border: 1px solid var(--line-strong); background: var(--surface);
+      transition: transform .15s, background-color .2s, border-color .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: var(--muted); }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    .btn-primary:hover { box-shadow: 0 8px 30px -8px rgba(34, 211, 238, .6); border-color: var(--accent); }
+    .btn svg { width: 16px; height: 16px; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 112px 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+    .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+    h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; margin: 0; letter-spacing: .01em; }
+    .section-head p { max-width: 420px; margin: 0; color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .card {
+      position: relative; display: flex; flex-direction: column;
+      background: linear-gradient(180deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; min-height: 300px;
+      transition: border-color .25s, transform .25s;
+      overflow: hidden;
+    }
+    .card::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 0%), rgba(34, 211, 238, .10), transparent 40%);
+    }
+    .card:hover { border-color: rgba(34, 211, 238, .4); transform: translateY(-2px); }
+    .card:hover::before { opacity: 1; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .icon {
+      width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
+      background: rgba(34, 211, 238, .08); border: 1px solid rgba(34, 211, 238, .25); color: var(--accent);
+    }
+    .icon svg { width: 22px; height: 22px; }
+    .index { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+    .card h3 { font-size: 22px; font-weight: 600; margin: 0 0 10px; letter-spacing: -.01em; }
+    .card p { color: var(--muted); margin: 0 0 24px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
+    .tags li { font-size: 13px; color: var(--text); border: 1px solid var(--line-strong); border-radius: 999px; padding: 3px 11px; }
+    .card .link {
+      margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 15px; color: var(--accent); align-self: flex-start;
+    }
+    .card .link svg { width: 16px; height: 16px; transition: transform .2s; }
+    .card .link:hover svg { transform: translateX(4px); }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;
+      background: linear-gradient(135deg, rgba(34, 211, 238, .10), rgba(34, 211, 238, 0) 60%), var(--surface);
+      border: 1px solid var(--line); border-radius: 20px; padding: 56px;
+    }
+    .contact h2 { margin-bottom: 16px; }
+    .contact p { color: var(--muted); margin: 0 0 32px; max-width: 480px; }
+    .contact .actions { justify-content: flex-start; }
+    .clock {
+      justify-self: center; position: relative; width: 240px; height: 240px;
+    }
+    .clock canvas { width: 100%; height: 100%; }
+    .clock-readout {
+      position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
+    }
+    .clock-time { font-family: var(--mono); font-size: 26px; letter-spacing: .04em; color: var(--text); }
+    .clock-label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 40px 0 56px; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer small { color: var(--muted); font-size: 14px; }
+    .social { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
+    .social a {
+      width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+      border: 1px solid var(--line-strong); color: var(--muted); transition: color .2s, border-color .2s;
+    }
+    .social a:hover { color: var(--accent); border-color: var(--accent); }
+    .social svg { width: 18px; height: 18px; }
+
+    /* ---------- Reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; padding: 36px 28px; }
+      .clock { width: 200px; height: 200px; }
+      section.block { padding: 80px 0; }
+    }
+    @media (max-width: 720px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        flex-direction: column; padding: 12px 16px 16px; gap: 2px;
+        background: rgba(7, 9, 12, .96); border-bottom: 1px solid var(--line);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 14px; }
+      .wrap { padding: 0 16px; }
+      .card { padding: 26px; min-height: 0; }
+      .hero-inner { padding: 56px 0 72px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn, .card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Truephoria home"><span class="brand-mark"></span>TRUEPHORIA</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#music">Music</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <span class="eyebrow"><span class="dot"></span>Open to collaborations</span>
+        <div class="logo-stage" id="logo-stage">
+          <canvas id="logo" aria-hidden="true"></canvas>
+          <h1 class="sr-only">Truephoria</h1>
+        </div>
+        <p class="lede">Music producer, game developer and programmer, making things that sound good, play well and run fast.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#work">Explore my work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+        <div class="hint">Move your cursor over the logo</div>
+      </div>
+    </section>
+
+    <section class="block" id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">What I do</p>
+            <h2>Selected work</h2>
+          </div>
+          <p>Four areas I spend my time on, from finished tracks to engine prototypes to open-source code.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal" id="music">
+            <div class="card-top">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+              <span class="index">01</span>
+            </div>
+            <h3>Music</h3>
+            <p>A collection of original tracks I've shared publicly. I'm available for remixes and collaborations, so reach out if you have a project in mind.</p>
+            <ul class="tags"><li>Production</li><li>Remixes</li><li>Collaborations</li></ul>
+            <a class="link" href="https://truephoria.github.io/">Listen to my music
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="card reveal" id="games">
+            <div class="card-top">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="3"/><path d="M6 13h4M8 11v4"/><circle cx="15.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="17.5" cy="14.5" r=".8" fill="currentColor"/><path d="M12 7c0-2 1-3 3-3"/></svg></span>
+              <span class="index">02</span>
+            </div>
+            <h3>Game Projects</h3>
+            <p>I'm currently developing a game in Unreal Engine, alongside a series of standalone gameplay mechanics and visual effects prototypes.</p>
+            <ul class="tags"><li>Unreal Engine</li><li>Gameplay systems</li><li>VFX</li></ul>
+            <a class="link" href="https://truephoria.github.io/">View game projects
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="card reveal" id="code">
+            <div class="card-top">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+              <span class="index">03</span>
+            </div>
+            <h3>Code Projects</h3>
+            <p>Everything from quick creative-coding experiments to larger, production-minded projects. This site's interactive logo is one of them.</p>
+            <ul class="tags"><li>JavaScript</li><li>Creative coding</li><li>Tools</li></ul>
+            <a class="link" href="https://truephoria.github.io/">Browse repositories
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="card reveal" id="community">
+            <div class="card-top">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg></span>
+              <span class="index">04</span>
+            </div>
+            <h3>Community</h3>
+            <p>A friendly server for people who like music, games and code. Come say hello and share what you're working on. Everyone is welcome, including lurkers.</p>
+            <ul class="tags"><li>Discussion</li><li>Feedback</li><li>Events</li></ul>
+            <a class="link" href="https://truephoria.github.io/">Join the community
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap">
+        <div class="contact reveal">
+          <div>
+            <p class="kicker">Contact</p>
+            <h2>Let's build something together</h2>
+            <p>Whether it's a remix, a game collaboration or a coding project, I'd love to hear about it. I usually reply within a couple of days.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://truephoria.github.io/">Send a message</a>
+              <a class="btn" href="https://truephoria.github.io/">View GitHub</a>
+            </div>
+          </div>
+          <div class="clock" aria-label="Current local time">
+            <canvas id="clock" aria-hidden="true"></canvas>
+            <div class="clock-readout">
+              <div class="clock-time" id="clock-time">--:--:--</div>
+              <div class="clock-label">Local time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <small>&copy; <span id="year">2026</span> Truephoria. All rights reserved.</small>
+      <ul class="social">
+        <li><a href="https://truephoria.github.io/" aria-label="Music profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a></li>
+        <li><a href="https://truephoria.github.io/" aria-label="Social profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20"/></svg></a></li>
+        <li><a href="https://truephoria.github.io/" aria-label="Code profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></a></li>
+        <li><a href="#top" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---------- Mobile nav ---------- */
+    var toggle = document.querySelector(".nav-toggle");
+    var links = document.getElementById("nav-links");
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") { links.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ---------- Scroll reveal ---------- */
+    var revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("in"); });
+    }
+
+    /* ---------- Card spotlight ---------- */
+    document.querySelectorAll(".card").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
+
+    /* ---------- Particle logo ---------- */
+    var stage = document.getElementById("logo-stage");
+    var canvas = document.getElementById("logo");
+    var ctx = canvas.getContext("2d");
+    var particles = [];
+    var pointer = { x: -9999, y: -9999 };
+    var W = 0, H = 0, dpr = 1, running = false, visible = true, rafId = 0;
+    var WORD = "TRUEPHORIA";
+
+    function Particle(tx, ty) {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * 4;
+      this.vy = (Math.random() - 0.5) * 4;
+      this.tx = tx; this.ty = ty;
+      this.hot = 0;
+    }
+    Particle.prototype.step = function (maxSpeed, maxForce, fleeR) {
+      // arrive
+      var dx = this.tx - this.x, dy = this.ty - this.y;
+      var d = Math.hypot(dx, dy) || 1;
+      var speed = d < 100 ? (d / 100) * maxSpeed : maxSpeed;
+      var ax = (dx / d) * speed - this.vx, ay = (dy / d) * speed - this.vy;
+      var am = Math.hypot(ax, ay);
+      if (am > maxForce) { ax = ax / am * maxForce; ay = ay / am * maxForce; }
+
+      // flee from pointer
+      var px = this.x - pointer.x, py = this.y - pointer.y;
+      var pd = Math.hypot(px, py);
+      if (pd < fleeR && pd > 0) {
+        var fx = (px / pd) * maxSpeed - this.vx, fy = (py / pd) * maxSpeed - this.vy;
+        var fm = Math.hypot(fx, fy);
+        if (fm > maxForce) { fx = fx / fm * maxForce; fy = fy / fm * maxForce; }
+        ax += fx * 3; ay += fy * 3;
+        this.hot = 1;
+      }
+      this.vx += ax; this.vy += ay;
+      var vm = Math.hypot(this.vx, this.vy);
+      if (vm > maxSpeed) { this.vx = this.vx / vm * maxSpeed; this.vy = this.vy / vm * maxSpeed; }
+      this.x += this.vx; this.y += this.vy;
+      this.hot *= 0.94;
+    };
+
+    function buildTargets() {
+      var rect = stage.getBoundingClientRect();
+      W = Math.max(1, Math.round(rect.width));
+      H = Math.max(1, Math.round(rect.height));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Draw the word offscreen and sample its pixels
+      var off = document.createElement("canvas");
+      off.width = W; off.height = H;
+      var o = off.getContext("2d");
+      var size = Math.min(H * 0.72, W / (WORD.length * 0.78));
+      o.font = size + "px 'Russo One', sans-serif";
+      o.textAlign = "center"; o.textBaseline = "middle";
+      o.fillStyle = "#fff";
+      o.fillText(WORD, W / 2, H / 2);
+      var data = o.getImageData(0, 0, W, H).data;
+      var gap = Math.max(4, Math.round(size / 18));
+      var targets = [];
+      for (var y = 0; y < H; y += gap) {
+        for (var x = 0; x < W; x += gap) {
+          if (data[(y * W + x) * 4 + 3] > 128) targets.push([x, y]);
+        }
+      }
+      // Reuse existing particles where possible so a resize doesn't reset everything
+      var next = [];
+      for (var i = 0; i < targets.length; i++) {
+        var p = particles[i] || new Particle(targets[i][0], targets[i][1]);
+        p.tx = targets[i][0]; p.ty = targets[i][1];
+        next.push(p);
+      }
+      particles = next;
+      if (reduceMotion) particles.forEach(function (p) { p.x = p.tx; p.y = p.ty; p.vx = p.vy = 0; });
+      dotSize = Math.max(1.6, gap * 0.42);
+    }
+
+    var dotSize = 2;
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      var maxSpeed = 10, maxForce = 0.9, fleeR = Math.max(50, W * 0.06);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        if (!reduceMotion) p.step(maxSpeed, maxForce, fleeR);
+        var h = p.hot;
+        ctx.fillStyle = h > 0.05
+          ? "rgba(" + Math.round(34 + 221 * h) + "," + Math.round(211 + 44 * h) + ",255,1)"
+          : "#22d3ee";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, dotSize, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      if (running) rafId = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (running || reduceMotion || !visible || document.hidden) return;
+      running = true; rafId = requestAnimationFrame(frame);
+    }
+    function stop() { running = false; cancelAnimationFrame(rafId); }
+
+    function setPointer(e) {
+      var r = canvas.getBoundingClientRect();
+      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
+    }
+    canvas.addEventListener("pointermove", setPointer);
+    canvas.addEventListener("pointerdown", setPointer);
+    canvas.addEventListener("pointerleave", function () { pointer.x = pointer.y = -9999; });
+
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { buildTargets(); if (reduceMotion) frame(); }, 150);
+    });
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) {
+        visible = en[0].isIntersecting; visible ? start() : stop();
+      }).observe(stage);
+    }
+
+    function initLogo() { buildTargets(); if (reduceMotion) frame(); else start(); }
+    if (document.fonts && document.fonts.load) {
+      document.fonts.load("100px 'Russo One'").then(initLogo, initLogo);
+    } else {
+      window.addEventListener("load", initLogo);
+    }
+
+    /* ---------- Clock ---------- */
+    var clock = document.getElementById("clock");
+    var cctx = clock.getContext("2d");
+    var timeEl = document.getElementById("clock-time");
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+    function drawClock() {
+      var r = clock.getBoundingClientRect();
+      var s = Math.max(1, Math.round(r.width));
+      var k = Math.min(window.devicePixelRatio || 1, 2);
+      if (clock.width !== s * k) { clock.width = clock.height = s * k; }
+      cctx.setTransform(k, 0, 0, k, 0, 0);
+      cctx.clearRect(0, 0, s, s);
+      var now = new Date();
+      var sec = now.getSeconds(), min = now.getMinutes(), hr = now.getHours();
+      var rings = [
+        { frac: sec / 60, rad: s * 0.46, w: 5, color: "#22d3ee" },
+        { frac: (min + sec / 60) / 60, rad: s * 0.40, w: 5, color: "#facc15" },
+        { frac: ((hr % 12) + min / 60) / 12, rad: s * 0.34, w: 5, color: "#f43f5e" }
+      ];
+      var c = s / 2, start = -Math.PI / 2;
+      rings.forEach(function (ring) {
+        cctx.lineCap = "round";
+        cctx.lineWidth = ring.w;
+        cctx.strokeStyle = "rgba(148,163,184,0.12)";
+        cctx.beginPath(); cctx.arc(c, c, ring.rad, 0, Math.PI * 2); cctx.stroke();
+        cctx.strokeStyle = ring.color;
+        cctx.beginPath(); cctx.arc(c, c, ring.rad, start, start + Math.max(0.001, ring.frac) * Math.PI * 2); cctx.stroke();
+      });
+      timeEl.textContent = pad(hr) + ":" + pad(min) + ":" + pad(sec);
+    }
+    drawClock();
+    setInterval(drawClock, 1000);
+  })();
+  </script>
+</body>
+</html>
